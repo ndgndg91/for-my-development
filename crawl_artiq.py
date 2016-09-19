@@ -29,7 +29,7 @@ print('--------------------------------------------------------')
 
 p = re.compile('[a-z]|[A-Z]|\W')
 alphaBet = p.findall(editDataStr)
-print(alphaBet)
+#print(alphaBet)
 
 for i in alphaBet:
 	editDataStr = editDataStr.replace(i,'')
