@@ -47,14 +47,19 @@ def spider(max_pages):
 		tbodybody = tbodybody.replace(' 6','')
 		tbodybody = tbodybody.replace('\n','  ')
 		rows = tbodybody.split()
-		#print(rows)
+		row1 = rows[0:6]
+		row2 = rows[6:12]
+		print(row1)
+		print(row2)
 		print(link)
-		
-		outfile = open('out.csv','w',encoding='utf-8') 
+		page+=1
+		outfile = open(str(page)+'.csv','w',encoding='utf-8') 
 		write_outfile = csv.writer(outfile)
 		write_outfile.writerow(headers)
+		write_outfile.writerow(row1)
+		write_outfile.writerow(row2)
 		#OutPutCsv.writerow(tbodybody)
+		outfile.close()
 		
-		page+=1
 		
-spider(407837)
+spider(407840)
