@@ -10,7 +10,7 @@ def insertdata(max_pages):
 		csv_data = csv.reader(open(str(page)+'.csv'))
 
 		for row in csv_data:
-			cursor.execute("INSERT INTO search_pants VALUES(%s,%s,%s,%s,%s,%s)", row)
+			cursor.execute("INSERT INTO search_pants_musinsa VALUES(%s,%s,%s,%s,%s,%s)", row)
 
 		#for r in cursor:
 		#    print(r)		
