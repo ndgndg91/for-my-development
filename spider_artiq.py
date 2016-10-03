@@ -2,7 +2,7 @@
 from bs4 import BeautifulSoup 
 from urllib.request import urlopen 
 import re
-from pandas import DataFrame
+import csv
 
 def spider(max_pages):
 	page = 82360
@@ -13,32 +13,43 @@ def spider(max_pages):
 		all_font=soup.find_all('font')
 		#print(all_font)
 		editDataStr = str(all_font)
-		p = re.compile('[a-z]|[A-Z]|\W')
+		p = re.compile('[a-z]+|[A-Z]+|<|>|/|\=|\"|,|\;|\#|0x|000000')
 		alphaBet = p.findall(editDataStr)
 		for i in alphaBet:
 			editDataStr = editDataStr.replace(i,'')
+		p1 = re.compile('브랜드|실측|\:|비교가 사이즈 미스가 없는 가장 좋은 방법입니다|adding|0x')
+		filtiering = p1.findall(editDataStr)
+		for i in filtiering:
+			editDataStr = editDataStr.replace(i,'')
+		p2 = re.compile('3300|&|\.|HRE|치수|\(|\)|상태|\[|\]')
+		filtiering2 = p2.findall(editDataStr)
+		for i in filtiering2:
+			editDataStr = editDataStr.replace(i,'')
+		
+		p3 = re.compile('8  10|5         |-')
+		filtiering3 = p3.findall(editDataStr)
+		for i in filtiering3:
+			editDataStr = editDataStr.replace(i,'')
+
+		headers = []
+		rows = []
 		#print(editDataStr)
-		wannaResult = editDataStr[5:33]
+		p4 = re.compile('[가-힣]{2,}')
+		p5 = re.compile('[0-9]{2,}')
+		makeheader = p4.findall(editDataStr)
+		for i in makeheader:
+			headers.append(i)
+		makerow = p5.findall(editDataStr)
+		for i in makerow:
+			rows.append(i)
+		print(headers)
+		print(rows)
 		print(url)
-		print('**************************************************')
-		print(wannaResult)
-		lengthdata = wannaResult[0:3]
-		lengthsize = wannaResult[3:5]
-		waistdata = wannaResult[5:7]
-		wasitsize = wannaResult[7:9]
-		hipdata = wannaResult[9:12]
-		hipsize = wannaResult[12:14]
-		thighdata = wannaResult[14:17]
-		thighsize = wannaResult[17:19]
-		hemdata =  wannaResult[19:21]
-		hemsize = wannaResult[21:23]
-		cratchdata = wannaResult[23:25]
-		cratchsize = wannaResult[25:27]
-		print(lengthdata,lengthsize,waistdata,wasitsize)
-		print(hipdata,hipsize,thighdata,thighsize)
-		print(hemdata,hemsize,cratchdata,cratchsize) 
-		#data = {lengthdata:[lengthsize],waistdata:[wasitsize],hipdata:[hipsize],thighdata:[thighsize],hemdata:[hemsize],cratchdata:[cratchsize]}
-		#frame = DataFrame(data)
-		#print(frame)
+		outfile = open(str(page)+'.csv','w',encoding='utf-8') 
+		write_outfile = csv.writer(outfile)
+		#write_outfile.writerow(headers)
+		write_outfile.writerow(headers)
+		write_outfile.writerow(rows)
+		outfile.close()
 		page +=1
-spider(82378)
+spider(82370)
