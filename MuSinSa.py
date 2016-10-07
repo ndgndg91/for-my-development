@@ -6,6 +6,7 @@ import csv
 
 def spider(max_pages):
 	page = 358864
+	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
 		f=urlopen(link)
@@ -88,7 +89,7 @@ def spider(max_pages):
 		
 				#print(link)
 				page+=1
-				outfile = open('out.csv','a',encoding='utf-8') 
+				outfile = open(str(fixpage)+'~'+str(max_pages-1)+'table2.csv','a',encoding='utf-8') 
 				write_outfile = csv.writer(outfile)
 				#write_outfile.writerow(headers)
 				write_outfile.writerow(row1)
@@ -109,7 +110,7 @@ def spider(max_pages):
 				table1_row.append(link)
 				print(table1_row)
 
-				outfile2 = open('out2.csv','a',encoding='utf-8')
+				outfile2 = open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv','a',encoding='utf-8')
 				write_outfile2 = csv.writer(outfile2)
 				write_outfile2.writerow(table1_row)
 				write_outfile2.writerow(table1_row)
