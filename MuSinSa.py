@@ -90,7 +90,7 @@ def spider(max_pages):
 				page+=1
 				outfile = open(str(fixpage)+'~'+str(max_pages-1)+'table2.csv','a',encoding='utf-8') 
 				write_outfile = csv.writer(outfile)
-				#write_outfile.writerow(headers)
+				#write_outfile.writeheader(headers)
 				write_outfile.writerow(row1)
 				write_outfile.writerow(row2)
 				if len(rows)>12:
