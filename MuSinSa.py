@@ -5,13 +5,34 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 299431
+	page = 358864
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
 		f=urlopen(link)
 		soup=BeautifulSoup(f,'lxml')
-		existing = re.compile('table_th_grey')
-		if existing.findall(str(soup)) :
+		a = soup.find_all('p',{'class':'item_categories'})
+		b = bool(re.search('하의',str(a)))
+		if b == True:
+			spanspan =soup.find_all('span',class_='product-img')
+			#i have to find a  way to scrap imgurl in span tag 
+			span = str(spanspan)
+			
+			span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
+			span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
+			span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
+			span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
+			span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
+			span = span.replace('image_zoom','')
+			#print(span)
+			q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
+			imrl = re.search(q,span)
+			imgurlsource = imrl.group()
+			#print(imgurlsource)
+			imgurl = []
+			imgurl.append(imgurlsource)
+			#print(imgurl)
+
+
 			all_table=soup.find('table',class_='table_th_grey')
 			theadhead=str(all_table.find('thead'))
 			tbodybody=str(all_table.find('tbody'))
@@ -69,11 +90,11 @@ def spider(max_pages):
 					print(row6)
 		
 		
-				print(link)
+				#print(link)
 				page+=1
-				outfile = open(str(page)+'.csv','w',encoding='utf-8') 
+				outfile = open('out.csv','a',encoding='utf-8') 
 				write_outfile = csv.writer(outfile)
-				write_outfile.writerow(headers)
+				#write_outfile.writerow(headers)
 				write_outfile.writerow(row1)
 				write_outfile.writerow(row2)
 				if len(rows)>12:
@@ -86,8 +107,27 @@ def spider(max_pages):
 					write_outfile.writerow(row6)
 				#OutPutCsv.writerow(tbodybody)
 				outfile.close()
+
+				table1_row = []
+				table1_row.append(imgurlsource)
+				table1_row.append(link)
+				print(table1_row)
+
+				outfile2 = open('out2.csv','a',encoding='utf-8')
+				write_outfile2 = csv.writer(outfile2)
+				write_outfile2.writerow(table1_row)
+				write_outfile2.writerow(table1_row)
+				if len(rows)>12:
+					write_outfile2.writerow(table1_row)
+				if len(rows)>18:
+					write_outfile2.writerow(table1_row)
+				if len(rows)>24:
+					write_outfile2.writerow(table1_row)
+				if len(rows)>30:
+					write_outfile2.writerow(table1_row)
+				outfile2.close()
 		else:
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
 		
-spider(299440)
+spider(358870)
