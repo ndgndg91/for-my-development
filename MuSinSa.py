@@ -15,7 +15,6 @@ def spider(max_pages):
 		b = bool(re.search('하의',str(a)))
 		if b == True:
 			spanspan =soup.find_all('span',class_='product-img')
-			#i have to find a  way to scrap imgurl in span tag 
 			span = str(spanspan)
 			
 			span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
