@@ -112,15 +112,6 @@ def spider(max_pages):
 				outfile2 = open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv','a',encoding='utf-8')
 				write_outfile2 = csv.writer(outfile2)
 				write_outfile2.writerow(table1_row)
-				write_outfile2.writerow(table1_row)
-				if len(rows)>12:
-					write_outfile2.writerow(table1_row)
-				if len(rows)>18:
-					write_outfile2.writerow(table1_row)
-				if len(rows)>24:
-					write_outfile2.writerow(table1_row)
-				if len(rows)>30:
-					write_outfile2.writerow(table1_row)
 				outfile2.close()
 		else:
 			print("This page is not about pants and i'm gonna scrap next page")
