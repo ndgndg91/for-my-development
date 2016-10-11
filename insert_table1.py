@@ -11,7 +11,8 @@ def insertdata_table1(max_pages):
 	csv_data = csv.reader(open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv'))
 
 	for row in csv_data:
-		cursor.execute("INSERT INTO z_table1 VALUES(null,%s,%s)", row)
+		cursor.execute("INSERT INTO z_table1(Img_URL,Link) VALUES(%s,%s)", row)
+	cursor.execute("UPDATE z_table1 SET z_table1.Pantsno=substr(link,45,6);")
 
 	#for r in cursor:
 	#    print(r)		

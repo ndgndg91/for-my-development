@@ -11,8 +11,8 @@ def insertdata_table2(max_pages):
 	csv_data = csv.reader(open(str(fixpage)+'~'+str(max_pages-1)+'table2.csv'))
 
 	for row in csv_data:
-		cursor.execute("INSERT INTO z_pants_musinsa VALUES(null,%s,%s,%s,%s,%s,%s)", row)
-
+		cursor.execute("INSERT INTO z_pants_musinsa VALUES(null,%s,%s,%s,%s,%s,%s,%s)", row)
+	cursor.execute("UPDATE z_pants_musinsa SET z_pants_musinsa.Pantsno=substr(link,45,6);")
 	#for r in cursor:
 	#    print(r)		
 	conn.commit()

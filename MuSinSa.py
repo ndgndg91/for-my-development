@@ -69,20 +69,26 @@ def spider(max_pages):
 				rows = tbodybody.split()
 				#print(rows)
 				row1 = rows[0:6]
+				row1.append(link)
 				row2 = rows[6:12]
+				row2.append(link)
 				print(row1)
 				print(row2)
 				if len(rows)>12:
 					row3 = rows[12:18]
+					row3.append(link)
 					print(row3)
 				if len(rows)>18:
 					row4 = rows[18:24]
+					row4.append(link)
 					print(row4)
 				if len(rows)>24:
 					row5 = rows[24:30]
+					row5.append(link)
 					print(row5)
 				if len(rows)>30:
 					row6 = rows[30:36]
+					row6.append(link)
 					print(row6)
 		
 		
