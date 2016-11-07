@@ -11,11 +11,11 @@ def insertdata_table1(max_pages):
 	csv_data = csv.reader(open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv'))
 
 
-	cursor.execute("create table table1 (PantsNo int,  Img_URL varchar(500),  Link varchar(500));")
+	cursor.execute("create table table1 (No MEDIUMINT NOT NULL AUTO_INCREMENT, PantsNo int,  Img_URL varchar(500),  Link varchar(500), PRIMARY KEY(No));")
 	for row in csv_data:
 		cursor.execute("INSERT INTO table1(Img_URL,Link) VALUES(%s,%s)", row)
 	cursor.execute("UPDATE table1 SET table1.Pantsno=substr(link,45,6);")
-	cursor.execute("ALTER TABLE table1 ADD CONSTRAINT table1_PK_PantsNo PRIMARY KEY(PantsNo);")
+	#cursor.execute("ALTER TABLE table1 ADD CONSTRAINT table1_PK_No PRIMARY KEY(No);")
 
 	#for r in cursor:
 	#    print(r)		
