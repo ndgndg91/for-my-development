@@ -9,6 +9,7 @@ def spider(max_pages):
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
+		pantsno=link[44:50]
 		f=urlopen(link)
 		soup=BeautifulSoup(f,'lxml')
 		a = soup.find_all('p',{'class':'item_categories'})
@@ -69,26 +70,26 @@ def spider(max_pages):
 				rows = tbodybody.split()
 				#print(rows)
 				row1 = rows[0:6]
-				row1.append(link)
+				row1.append(link); row1.append(pantsno)
 				row2 = rows[6:12]
-				row2.append(link)
+				row2.append(link); row2.append(pantsno)
 				print(row1)
 				print(row2)
 				if len(rows)>12:
 					row3 = rows[12:18]
-					row3.append(link)
+					row3.append(link); row3.append(pantsno)
 					print(row3)
 				if len(rows)>18:
 					row4 = rows[18:24]
-					row4.append(link)
+					row4.append(link); row4.append(pantsno)
 					print(row4)
 				if len(rows)>24:
 					row5 = rows[24:30]
-					row5.append(link)
+					row5.append(link); row5.append(pantsno)
 					print(row5)
 				if len(rows)>30:
 					row6 = rows[30:36]
-					row6.append(link)
+					row6.append(link); row6.append(pantsno)
 					print(row6)
 		
 		
@@ -113,6 +114,7 @@ def spider(max_pages):
 				table1_row = []
 				table1_row.append(imgurlsource)
 				table1_row.append(link)
+				table1_row.append(pantsno)
 				print(table1_row)
 
 				outfile2 = open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv','a',encoding='utf-8')

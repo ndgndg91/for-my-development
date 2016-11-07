@@ -10,21 +10,24 @@ def insertdata_table2(max_pages):
 	#cursor.execute("select * from search_pants")
 	csv_data = csv.reader(open(str(fixpage)+'~'+str(max_pages-1)+'table2.csv'))
 
-	cursor.execute("create table pants_musinsa (Seq  MEDIUMINT NOT NULL AUTO_INCREMENT, PantsNo int,Size int,\
+	cursor.execute("create table pants_musinsa(Seq MEDIUMINT NOT NULL AUTO_INCREMENT,\
+	  Size int NOT NULL,\
 	  Length int,\
 	  Waist int, \
 	  Thigh  int, \
 	  Crotch int,\
 	  Hem int,\
 	  Link varchar(200),\
-	  PRIMARY KEY(Seq));")
-
+	  PantsNo int NOT NULL, \
+	  CONSTRAINT pants_musinsa_PK_PantsNoandSize PRIMARY KEY(Seq) \
+	  );")
+  
 	for row in csv_data:
-		cursor.execute("INSERT INTO pants_musinsa(PantsNo,Size,Length,Waist,Thigh,Crotch,Hem,Link) VALUES(null,%s,%s,%s,%s,%s,%s,%s)", row)
-	cursor.execute("UPDATE pants_musinsa SET pants_musinsa.Pantsno=substr(link,45,6);")
+		cursor.execute("INSERT INTO pants_musinsa(Size,Length,Waist,Thigh,Crotch,Hem,Link,PantsNo) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)", row)
+	#cursor.execute("UPDATE pants_musinsa SET pants_musinsa.Pantsno=substr(link,45,6);")
 	#cursor.execute("ALTER TABLE pants_musinsa ADD CONSTRAINT pants_musinsa_PK_PantsNoandSize PRIMARY KEY(PantsNo,Size);")
 	#cursor.execute("CREATE INDEX musinsa_idx_PantsNo ON pants_musinsa(PantsNo);")
-	#cursor.execute("ALTER TABLE pants_musinsa ADD CONSTRAINT pants_musinsa_FK_PantsNo FOREIGN KEY(PantsNo) REFERENCES table1(PantsNo)")
+	cursor.execute("ALTER TABLE pants_musinsa ADD CONSTRAINT pants_musinsa_FK_PantsNo FOREIGN KEY(PantsNo) REFERENCES table1(PantsNo);")
 	#for r in cursor:
 	#    print(r)		
 	conn.commit()
@@ -33,3 +36,7 @@ def insertdata_table2(max_pages):
 	print('Done')
 
 insertdata_table2(358870)
+
+#PantsNo int NOT NULL,\
+#	  PRIMARY KEY(Seq,PantsNo), FOREIGN KEY(PantsNo) REFERENCES table1(PantsNo) ON DELETE CASCADE
+#
