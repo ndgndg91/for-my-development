@@ -5,7 +5,7 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 302000
+	page = 300000
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -34,16 +34,23 @@ def spider(max_pages):
 			imgurl.append(imgurlsource)
 			#print(imgurl)
 
-			
-			
-			all_table=soup.find('table',class_='table_th_grey')
-			theadhead=str(all_table.find('thead'))
-			tbodybody=str(all_table.find('tbody'))
 			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
 			t2 = re.compile('[가-힣]')
 			t3 = re.compile('tbody|id|class|td|th|tr|mysize|colspan|order_size_save|save_mysize|style|display:none')
 			t4 = re.compile('save|a|href|onclick|return|false|input|name|size_info|type|\"|/|=|_')
 			t5 = re.compile('~|!|<|>|\;|\?|\#|\'|MY|\(|\)')
+			soupmeta = soup.head
+			allmeta = soupmeta.find_all('meta')
+			brandmeta = allmeta[2]
+			strbrandmeta = str(brandmeta); strbrandmeta = strbrandmeta.replace('제품번호','')
+			strbrandmeta = strbrandmeta.replace(' ','')
+			splitbrandmeta = strbrandmeta.split(':')
+			brand = splitbrandmeta[2]				
+			all_table=soup.find('table',class_='table_th_grey')
+			theadhead=str(all_table.find('thead'))
+			tbodybody=str(all_table.find('tbody'))
+			tbodybody=tbodybody.replace('<td class="goods_size_val"></td>','<td class="goods_size_val">000</td>')
+			
 			alphaBet = p.findall(theadhead)
 			for i in alphaBet:
 				theadhead = theadhead.replace(i,'')
@@ -120,6 +127,7 @@ def spider(max_pages):
 				table1_row.append(imgurlsource)
 				table1_row.append(link)
 				table1_row.append(pantsno)
+				table1_row.append(brand)
 				print(table1_row)
 
 				outfile2 = open('table1.csv','a',encoding='utf-8')
@@ -134,4 +142,4 @@ def spider(max_pages):
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
 		
-spider(305000)
+spider(310000)
