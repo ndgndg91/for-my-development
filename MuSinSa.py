@@ -5,7 +5,7 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 300000
+	page = 305000
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -18,64 +18,67 @@ def spider(max_pages):
 		if b == True and c == True:
 			spanspan =soup.find_all('span',class_='product-img')
 			span = str(spanspan)
-			
 			span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
 			span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
 			span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
 			span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
 			span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
 			span = span.replace('image_zoom','')
-			#print(span)
 			q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
 			imrl = re.search(q,span)
 			imgurl = []
 			imgurlsource = imrl.group()
-			#print(imgurlsource)
 			imgurl.append(imgurlsource)
-			#print(imgurl)
-
+			#imageurl----------------------------------------------------------------------------------
 			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
-			t2 = re.compile('[가-힣]')
-			t3 = re.compile('tbody|id|class|td|th|tr|mysize|colspan|order_size_save|save_mysize|style|display:none')
-			t4 = re.compile('save|a|href|onclick|return|false|input|name|size_info|type|\"|/|=|_')
-			t5 = re.compile('~|!|<|>|\;|\?|\#|\'|MY|\(|\)')
+			t2 = re.compile('<td class="goods_size_val">|<th>|</th>|<td>|</td>|<tr>|</tr>|<tbody>|</tbody>|MY')
 			soupmeta = soup.head
 			allmeta = soupmeta.find_all('meta')
 			brandmeta = allmeta[2]
 			strbrandmeta = str(brandmeta); strbrandmeta = strbrandmeta.replace('제품번호','')
 			strbrandmeta = strbrandmeta.replace(' ','')
 			splitbrandmeta = strbrandmeta.split(':')
-			brand = splitbrandmeta[2]				
+			brand = splitbrandmeta[2]
+			#brand-------------------------------------------------------------------------------------
 			all_table=soup.find('table',class_='table_th_grey')
 			theadhead=str(all_table.find('thead'))
 			tbodybody=str(all_table.find('tbody'))
 			tbodybody=tbodybody.replace('<td class="goods_size_val"></td>','<td class="goods_size_val">000</td>')
-			
+			tbodybody=tbodybody.replace('<th>옵션없음</th>','<th>free</th>')
+			tbodybody=tbodybody.replace('<th>1 (M)</th>','<th>M</th>')
+			tbodybody=tbodybody.replace('<th>2 (L)</th>','<th>L</th>')
+			tbodybody=tbodybody.replace('<th>3 (XL)</th>','<th>XL</th>')
+			tbodybody=tbodybody.replace(' - ','-');tbodybody=tbodybody.replace('MAN ','MAN') 
+			tbodybody=tbodybody.replace('<th>S ','<th>S')
+			tbodybody=tbodybody.replace('<th>M ','<th>M')
+			tbodybody=tbodybody.replace('<th>L ','<th>L')
+			tbodybody=tbodybody.replace('<th>XL ','<th>XL')
+			tbodybody=tbodybody.replace(' (S)</th>','(S)</th>')
+			tbodybody=tbodybody.replace(' (M)</th>','(M)</th>')
+			tbodybody=tbodybody.replace(' (L)<th>','(L)</th>')
+			tbodybody=tbodybody.replace(' (XL)<th>','(XL)</th>')
+			tbodybody=tbodybody.replace('<th>ONE SIZE</th>','<th>ONESIZE</th>')
+			tbodybody=tbodybody.replace(' 플래그링 ','플래그링');tbodybody=tbodybody.replace('WOMAN ','WOMAN') 
+			tbodybody=tbodybody.replace('MELANGE GREY','MELANGEGREY')
 			alphaBet = p.findall(theadhead)
 			for i in alphaBet:
 				theadhead = theadhead.replace(i,'')
 			theadhead = theadhead.replace('clssml','')
 			theadhead = theadhead.replace('m  l','')
 			headers = theadhead.split()
+			#header number count
 			if len(headers)==6:
 				print(headers)
 				alphaBet1 = t2.findall(tbodybody)
-				alphaBet2 = t3.findall(tbodybody)
-				alphaBet3 = t4.findall(tbodybody)
-				alphaBet4 = t5.findall(tbodybody)
 				for i in alphaBet1:
 					tbodybody = tbodybody.replace(i,'')
-				for i in alphaBet2:
-					tbodybody = tbodybody.replace(i,'')
-				for i in alphaBet3:
-					tbodybody = tbodybody.replace(i,'')
-				for i in alphaBet4:
-					tbodybody = tbodybody.replace(i,'')
-				tbodybody = tbodybody.replace('sve','');tbodybody = tbodybody.replace('size','')
-				tbodybody = tbodybody.replace('flse','');	tbodybody = tbodybody.replace('nmeinfo','')
-				tbodybody = tbodybody.replace('hden','');tbodybody = tbodybody.replace('vlue','')
-				tbodybody = tbodybody.replace('goodsvl','');tbodybody = tbodybody.replace(' 6','')
-				tbodybody = tbodybody.replace('\n','  ')
+				tbodybody = tbodybody.replace('<tr id="mysize">','');tbodybody = tbodybody.replace('<td colspan="6">가지고 계신 제품의 실측을 입력해 보세요~!','')
+				tbodybody = tbodybody.replace('<tr class="order_size_save" id="save_mysize" style="display:none">','')
+				tbodybody = tbodybody.replace('<a href="#" onclick="save_size(\'6\'); return false;">위 구매 내역의 사이즈를 저장','')
+				tbodybody = tbodybody.replace('<a href="#" onclick="save_size(\'23\'); return false;">위 구매 내역의 사이즈를 저장','')
+				tbodybody = tbodybody.replace('<td colspan="6">','');tbodybody = tbodybody.replace('하시겠습니까?</a>','')
+				tbodybody = tbodybody.replace('<input name="size_info" type="hidden" value=""/>','')
+				#print(tbodybody)
 				rows = tbodybody.split()
 				#print(rows)
 				row1 = rows[0:6]
