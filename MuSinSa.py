@@ -5,7 +5,7 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 305000
+	page = 320000
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -16,24 +16,29 @@ def spider(max_pages):
 		b = bool(re.search('하의',str(a)))
 		c = bool(soup.find('table',class_='table_th_grey'))
 		if b == True and c == True:
-			spanspan =soup.find_all('span',class_='product-img')
-			span = str(spanspan)
-			span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
-			span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
-			span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
-			span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
-			span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
-			span = span.replace('image_zoom','')
-			q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
-			imrl = re.search(q,span)
-			imgurl = []
-			imgurlsource = imrl.group()
-			imgurl.append(imgurlsource)
-			#imageurl----------------------------------------------------------------------------------
-			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
-			t2 = re.compile('<td class="goods_size_val">|<th>|</th>|<td>|</td>|<tr>|</tr>|<tbody>|</tbody>|MY')
+			#--------------------------------316744~~~
 			soupmeta = soup.head
 			allmeta = soupmeta.find_all('meta')
+			imghtml = str(allmeta[6])
+			imghtml = imghtml.replace('<meta content="','')
+			imghtml = imghtml.replace('" id="fbOgImage" property="og:image"/>','')
+			#-----------------------------------------------------------------------------------------
+			#spanspan =soup.find_all('span',class_='product-img')
+			#span = str(spanspan)
+			#span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
+			#span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
+			#span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
+			#span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
+			#span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
+			#span = span.replace('image_zoom','')
+			#q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
+			#imrl = re.search(q,span)
+			#imgurl = []
+			#imgurlsource = imrl.group()
+			#imgurl.append(imgurlsource)
+			#imageurl---------------------------------------------------------------------------------~316743
+			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
+			t2 = re.compile('<td class="goods_size_val">|<th>|</th>|<td>|</td>|<tr>|</tr>|<tbody>|</tbody>|MY')
 			brandmeta = allmeta[2]
 			strbrandmeta = str(brandmeta); strbrandmeta = strbrandmeta.replace('제품번호','')
 			strbrandmeta = strbrandmeta.replace(' ','')
@@ -55,11 +60,11 @@ def spider(max_pages):
 			tbodybody=tbodybody.replace('<th>XL ','<th>XL')
 			tbodybody=tbodybody.replace(' (S)</th>','(S)</th>')
 			tbodybody=tbodybody.replace(' (M)</th>','(M)</th>')
-			tbodybody=tbodybody.replace(' (L)<th>','(L)</th>')
-			tbodybody=tbodybody.replace(' (XL)<th>','(XL)</th>')
+			tbodybody=tbodybody.replace(' (L)</th>','(L)</th>')
+			tbodybody=tbodybody.replace(' (XL)</th>','(XL)</th>')
 			tbodybody=tbodybody.replace('<th>ONE SIZE</th>','<th>ONESIZE</th>')
 			tbodybody=tbodybody.replace(' 플래그링 ','플래그링');tbodybody=tbodybody.replace('WOMAN ','WOMAN') 
-			tbodybody=tbodybody.replace('MELANGE GREY','MELANGEGREY')
+			tbodybody=tbodybody.replace('MELANGE GREY','MELANGEGREY');tbodybody=tbodybody.replace(' NAVY','NAVY') 
 			alphaBet = p.findall(theadhead)
 			for i in alphaBet:
 				theadhead = theadhead.replace(i,'')
@@ -127,7 +132,7 @@ def spider(max_pages):
 				outfile.close()
 
 				table1_row = []
-				table1_row.append(imgurlsource)
+				table1_row.append(imghtml)
 				table1_row.append(link)
 				table1_row.append(pantsno)
 				table1_row.append(brand)
@@ -137,7 +142,7 @@ def spider(max_pages):
 				#outfile2 = open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv','a',encoding='utf-8')
 				write_outfile2 = csv.writer(outfile2)
 				write_outfile2.writerow(table1_row)
-				outfile2.close()
+				outfile2.close(); print("Ok! Done!")
 			else:
 				print("Column is not matching,, Maybe This is not pants?")
 				page+=1
@@ -145,4 +150,4 @@ def spider(max_pages):
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
 		
-spider(310000)
+spider(325000)
