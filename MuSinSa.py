@@ -22,21 +22,11 @@ def spider(max_pages):
 			imghtml = str(allmeta[6])
 			imghtml = imghtml.replace('<meta content="','')
 			imghtml = imghtml.replace('" id="fbOgImage" property="og:image"/>','')
-			#-----------------------------------------------------------------------------------------
-			#spanspan =soup.find_all('span',class_='product-img')
-			#span = str(spanspan)
-			#span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
-			#span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
-			#span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
-			#span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
-			#span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
-			#span = span.replace('image_zoom','')
 			#q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
-			#imrl = re.search(q,span)
+			#imrl = re.search(imghtml,span)
 			#imgurl = []
 			#imgurlsource = imrl.group()
 			#imgurl.append(imgurlsource)
-			#imageurl---------------------------------------------------------------------------------~316743
 			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
 			t2 = re.compile('<td class="goods_size_val">|<th>|</th>|<td>|</td>|<tr>|</tr>|<tbody>|</tbody>|MY')
 			brandmeta = allmeta[2]
