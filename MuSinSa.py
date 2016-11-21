@@ -5,7 +5,7 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 320000
+	page = 330000
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -44,12 +44,12 @@ def spider(max_pages):
 			tbodybody=tbodybody.replace('<th>2 (L)</th>','<th>L</th>')
 			tbodybody=tbodybody.replace('<th>3 (XL)</th>','<th>XL</th>')
 			tbodybody=tbodybody.replace(' - ','-');tbodybody=tbodybody.replace('MAN ','MAN') 
-			tbodybody=tbodybody.replace('<th>S ','<th>S')
-			tbodybody=tbodybody.replace('<th>M ','<th>M')
-			tbodybody=tbodybody.replace('<th>L ','<th>L')
+			tbodybody=tbodybody.replace('<th>S ','<th>S');tbodybody=tbodybody.replace(' BLUE','BLUE')
+			tbodybody=tbodybody.replace('<th>M ','<th>M');tbodybody=tbodybody.replace('INDIGO ','INDIGO')
+			tbodybody=tbodybody.replace('<th>L ','<th>L');tbodybody=tbodybody.replace('HICKORY ','HICKORY')
 			tbodybody=tbodybody.replace('<th>XL ','<th>XL')
-			tbodybody=tbodybody.replace(' (S)</th>','(S)</th>')
-			tbodybody=tbodybody.replace(' (M)</th>','(M)</th>')
+			tbodybody=tbodybody.replace(' (S)</th>','(S)</th>');tbodybody=tbodybody.replace('<th>34 ','<th>34')
+			tbodybody=tbodybody.replace(' (M)</th>','(M)</th>');tbodybody=tbodybody.replace('<th>36 ','<th>36')
 			tbodybody=tbodybody.replace(' (L)</th>','(L)</th>')
 			tbodybody=tbodybody.replace(' (XL)</th>','(XL)</th>')
 			tbodybody=tbodybody.replace('<th>ONE SIZE</th>','<th>ONESIZE</th>')
@@ -140,4 +140,4 @@ def spider(max_pages):
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
 		
-spider(325000)
+spider(330001)
