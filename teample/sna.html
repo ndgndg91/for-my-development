@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="css/css1.css">
+    <link rel="stylesheet" href="css/ham.css">
+    <style>
+    .inner{
+      border: 5px solid white;
+      border-radius: 5px;
+    }
+    .space{
+}
+    </style>
+</head>
+<body>
+  <header id="header">
+    <!-- <div class="inner"> -->
+
+      <!-- Nav -->
+        <nav>
+          <ul>
+            <li><span class="logospan"><a href="index.html">명슐랭</a></span></li>
+            <li> <font size=5 color="white">MENU&nbsp;</font> </li>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
+
+    <!-- </div> -->
+    <br><br><br><br><br>
+    <center><p>
+      <font size=7 color=white class="bigfont"><b>2017 명지대 인기 맛집 TOP 100</b></font><br>
+      <font size=5 color=white class="bigfont"><b>"명지대에서 4년 넘게 다녔는데 여기를 다 못 가보다니!!!"</b></font>
+    </p></center>
+
+<br><br>
+    <center><span class='green_window'>
+      <input type='text' class='input_text'placeholder="식당 또는 음식" />
+    </span>
+    <button type='submit' class='sch_smit'>검색</button></center>
+  </header>
+
+<!-- Menu -->
+  <nav id="menu">
+    <h2>Menu</h2>
+    <br>
+    <ul>
+      <li><a href="kor.html">한식</a></li>
+      <li><a href="chi.html">중식</a></li>
+      <li><a href="jap.html">일식</a></li>
+      <li><a href="sna.html">분식</a></li>
+      <li><a href="alc.html">술집</a></li>
+    </ul>
+  </nav>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  function doImgPop(img){
+   img1= new Image();
+   img1.src=(img);
+   imgControll(img);
+  }
+  function imgControll(img){
+   if((img1.width!=0)&&(img1.height!=0)){
+      viewImage(img);
+    }
+    else{
+       controller="imgControll('"+img+"')";
+       intervalID=setTimeout(controller,20);
+    }
+  }
+  function viewImage(img){
+   W=img1.width;
+   H=img1.height;
+   O="width="+W+",height="+H+",scrollbars=yes";
+   imgWin=window.open("","",O);
+   imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+   imgWin.document.write("<body topmargin=0 leftmargin=0>");
+   imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+   imgWin.document.close();
+  }
+  function fnMove(seq){
+         var offset = $("#div" + seq).offset();
+         $('#second, #second_media').animate({scrollLeft : offset.left}, 400);
+     }
+  function fnMove2(seq){
+        var offset = $("#div" + seq).offset();
+        $('#third, #third_media').animate({scrollLeft : offset.left}, 400);
+    }
+  </script>
+</body>
+</html>

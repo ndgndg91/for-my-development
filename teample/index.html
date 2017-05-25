@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>명슐랭</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/css1.css">
+    <link rel="stylesheet" href="css/ham.css">
+    <style>
+    header{
+      border: 5px solid white;
+      border-radius: 5px;
+    }
+    .space{
+      background: white;
+}
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <!-- <div class="inner"> -->
+
+        <!-- Nav -->
+          <nav>
+            <ul>
+               <li><span class="logospan"><a href="index.html">명슐랭</a></span></li>&nbsp;
+              <li> <font size=5 color="white">MENU&nbsp;</font> </li>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+
+      <!-- </div> -->
+      <br><br><br><br><br>
+      <center><p>
+        <font size=7 color=white class="bigfont"><b>2017 명지대 인기 맛집 TOP 100</b></font><br>
+        <font size=5 color=white class="bigfont"><b>"명지대에서 4년 넘게 다녔는데 여기를 다 못 가보다니!!!"</b></font>
+      </p></center>
+
+  <br><br>
+      <center><span class='green_window'>
+        <input type='text' class='input_text'placeholder="식당 또는 음식" />
+      </span>
+      <button type='submit' class='sch_smit'>검색</button></center>
+    </header>
+
+  <!-- Menu -->
+    <nav id="menu">
+      <h2>Menu</h2>
+      <br>
+      <ul>
+        <li><a href="kor.html">한식</a></li>
+        <li><a href="chi.html">중식</a></li>
+        <li><a href="jap.html">일식</a></li>
+        <li><a href="sna.html">분식</a></li>
+        <li><a href="alc.html">술집</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- <div id="first">
+      <div id="logo">
+  			<h1><a id="home" href="index.html">명슐랭</a></h1>
+  		</div>
+
+  		<div id="nav">
+  			<ul>
+  				<li><a href="kor.html"><font size=4><b>한식</b></font></a></li>
+          <li><a href="#"><font size=4><b>중식</b></font></a></li>
+  				<li><a href="#"><font size=4><b>일식</b></font></a></li>
+  				<li><a href="#"><font size=4><b>분식</b></font></a></li>
+          <li><a href="#"><font size=4><b>술집</b></font></a></li>
+  			</ul>
+  		</div>
+      <br><br><br><br><br>
+      <center><p>
+        <font size=12 color=white class="bigfont"><b>2017 명지대 인기 맛집 TOP 100</b></font><br>
+        <font size=4 color=white class="bigfont"><b>"명지대에서 4년 넘게 다녔는데 여기를 다 못 가보다니!!!"</b></font>
+      </p></center>
+
+  <br><br>
+      <center><span class='green_window'>
+      	<input type='text' class='input_text'placeholder="식당 또는 음식" />
+      </span>
+      <button type='submit' class='sch_smit'>검색</button></center>
+    </div> -->
+    <br>
+<hr><br>
+<!-- 상단 고정시키기 -->
+    <div id="second">
+      <span><font size=6 color=#FF8200>언론에 소개된 명지대 맛집</font></span>
+      <div id="second_media">
+      <div id="div1">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+      </div>
+      <div id="div2">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+      </div>
+      <div id="div3">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+      </div>
+    </div>
+    </div>
+    <center><button class="button_example" onclick="fnMove('1')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove('2')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove('3')"></button></center>
+        <br><br><hr><br>
+    <div id="third">
+      <span><font size=6 color=#FF8200>평점이 높은 명지대 맛집</font></span>
+      <div id="third_media">
+              <div id="div4">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+        </div>
+              <div id="div5">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+        </div>
+              <div id="div6">
+        <article>예시</article>
+        <article>예시</article>
+        <article>예시</article>
+        </div>
+      </div>
+    </div>
+    <center><button class="button_example" onclick="fnMove2('4')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove2('5')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove2('6')"></button></center>
+        <br><br><hr><br>
+
+    <div id="fourth">
+      <section id="my_img"><img src="https://scontent-icn1-1.xx.fbcdn.net/v/t31.0-8/14567459_986102784852447_6304595255749962987_o.png?oh=70246be85e2f6a3d36f4836b3f79b19b&oe=59B143B3"
+        width="550px"height="450px"  onclick="doImgPop(this.src)" alt="클릭하시면 조금더 커집니다.."></section>
+      <section id="content">
+        <p><h1>명지대 맛집 관련 사이트 링크<h1></p>
+          <ul>
+          <li><a href="https://www.facebook.com/myongjiworld/?fref=ts">https://www.facebook.com/myongjiworld/?fref=ts</a></li>
+          <li></li>
+        </ul>
+      </section>
+
+    </div>
+    <div id="footer">
+      <br>
+      <center><div id="footer_content">
+        <div id="footer_logo"></div>
+        <table>
+          <tr>
+            <td> 회사소개</td>
+            <td> 명슐랭 채용</td>
+          </tr>
+          <tr>
+            <td> 투자 정보</td>
+            <td> 브랜드 가이드라인</td>
+          </tr>
+          <tr>
+            <td>망고플레이트 비즈니스</td>
+            <td> 공지사항</td>
+          </tr>
+          <tr>
+            <td> 이용약관</td>
+            <td> 개인정보처리방침</td>
+          </tr>
+          <tr>
+            <td> 위치기반서비스 이용약관</td>
+            <td> 커뮤니티 가이드라인</td>
+          </tr>
+          <tr>
+            <td> 홀릭 소개</td>
+            <td> 문의하기</td>
+          </tr>
+
+        </table>
+        <br>
+        <hr>
+        <br>
+<span><font size=3 color=white>㈜ 명슐랭 대표이사 : 남동길 | 사업자 핸드폰번호: 010-7225-5198 | 서울특별시 서대문구 거북골로 34<br>
+© 2017 Myoung CHELIN Co., Ltd. All rights reserved.</font></span>
+      </div></center>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    function doImgPop(img){
+     img1= new Image();
+     img1.src=(img);
+     imgControll(img);
+    }
+    function imgControll(img){
+     if((img1.width!=0)&&(img1.height!=0)){
+        viewImage(img);
+      }
+      else{
+         controller="imgControll('"+img+"')";
+         intervalID=setTimeout(controller,20);
+      }
+    }
+    function viewImage(img){
+     W=img1.width;
+     H=img1.height;
+     O="width="+W+",height="+H+",scrollbars=yes";
+     imgWin=window.open("","",O);
+     imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+     imgWin.document.write("<body topmargin=0 leftmargin=0>");
+     imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+     imgWin.document.close();
+    }
+    function fnMove(seq){
+           var offset = $("#div" + seq).offset();
+           $('#second, #second_media').animate({scrollLeft : offset.left}, 400);
+       }
+    function fnMove2(seq){
+          var offset = $("#div" + seq).offset();
+          $('#third, #third_media').animate({scrollLeft : offset.left}, 400);
+      }
+    </script>
+  </body>
+  </html>
