@@ -1,0 +1,41 @@
+@CHARSET "EUC-KR";
+
+*{
+	margin:0;
+}
+html, body {
+	width:100%;
+	height:100%;
+}
+
+.content{
+	position:relative;
+	
+}
+.cloths{
+	display:inline-block;
+	width:400px;
+	height:700px;	
+}
+.cloths a img {
+	position:relative;
+	width:400px;
+	height:480px;
+}
+#content p:NTH-CHILD(1){
+	width:100%;
+}
+
+#content p:NTH-CHILD(n+2){
+	background-color: black;
+	color:white;
+	text-align:center;
+	line-height: 40px;
+}
+
+.info table{
+	width:100%;
+	text-align:center;
+}
+
+

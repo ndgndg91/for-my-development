@@ -1,0 +1,398 @@
+@CHARSET "EUC-KR";
+
+* {
+	margin: 0;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+출처: http://web-atelier.tistory.com/16 [웹아틀리에 - Web atelier]
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
+	fieldset, input, textarea, p, blockquote, th, td {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+table {
+	border-spacing: 0;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-weight: normal;
+	font-style: normal;
+}
+
+abbr, acronym {
+	border: 0;
+}
+
+#header {
+	width: 100%;
+	background-color: white;
+	position: fixed;
+	height: 12%;
+	text-align: center;
+	margin: 0 auto;
+	z-index: 99;
+}
+
+#header .logo {
+	display: inline-block;
+	background: url('../img/Fitple.png') no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+	cursor: pointer;
+}
+
+#header .menu1 {
+	display: inline-block;
+	background: url('../img/off/Header_1_Approach_off.png') no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu1_on {
+	display: inline-block;
+	background: url('../img/on/Header_1_Approach_on.png') left top no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu2 {
+	display: inline-block;
+	background: url('../img/off/Header_2_Search_off.png') left top no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu2_on {
+	display: inline-block;
+	background: url('../img/on/Header_2_Search_on.png') left top no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu3 {
+	display: inline-block;
+	background: url('../img/off/Header_3_Sign in_off.png') left top
+		no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu3_on {
+	display: inline-block;
+	background: url('../img/on/Header_3_Sign in_on.png') left top no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu4 {
+	display: inline-block;
+	background: url('../img/off/Header_4_My page_off.png') left top
+		no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+
+#header .menu4_on {
+	display: inline-block;
+	background: url('../img/on/Header_4_My page_on.png') left top no-repeat;
+	background-position: center center;
+	width: 10%;
+	height: 100%;
+}
+/* Custom CSS
+* --------------------------------------- */
+
+/* Section 1
+		 * --------------------------------------- */
+#section0 {
+	
+}
+
+#section0 .content {
+	position: relative;
+	background: url('../img/1_Home/Home_main.png') center center no-repeat;
+	background-size: 100% 120%;
+	width: 100%;
+	top: 12%;
+	height: 88%;
+}
+/* Section 2
+		 * --------------------------------------- */
+#section1 {
+	
+}
+
+#section1 .content {
+	position: relative;
+	width: 100%;
+	top: 12%;
+	height: 88%;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	background-image: url(../img/section_bg.jpg);
+	background-position: center center;
+	background-size: cover;
+	opacity: 0.3;
+
+}
+.wrap {
+	position: relative;
+	width: 30%;
+	height: 55%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+.userinput {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#section1 .content .wrap .userinput div:nth-child(n) {
+	position: relative;
+	width: 100%;
+	height: 20%;
+}
+.userinput div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.userinput div section {
+	color: #fff;
+	font-size: 10px;
+}
+
+.userinput div input {
+	position: relative;
+	width: 150px;
+	height: 30px;
+}
+#section1 .content .wrap .inputbtn .searchbtn {
+	margin-top: 10px;
+	display: inline-block;
+	padding: 1em 2em 1em 2em;
+	border-radius: .25em;
+	font-size: 20px;
+	color: black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Section 3
+		 * --------------------------------------- */
+#section2 {
+	
+}
+
+#section2 .content {
+	position: relative;
+	width: 100%;
+	top: 12%;
+	height: 88%;
+	background: url('../img/3_Sign in/Sign in_main.png') center center
+		no-repeat;
+	background-size: cover;
+	text-align: center;
+}
+
+#section2 .loginbox {
+	position: absolute;
+	border: 2px solid red;
+	width: 300px;
+	height: 200px;
+	visibility: hidden;
+	top: 200px;
+	display: inline-block;
+}
+
+#section2 .loginbox--active {
+	position: absolute;
+	background-color: white;
+	border: 2px solid red;
+	border-radius: 25px; top : 200px;
+	width: 400px;
+	height: 200px;
+	visibility: visible;
+	display: inline-block;
+	z-index: 50;
+	top: 200px;
+}
+
+.login__close {
+	font-size: 2rem;
+	line-height: 2rem;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	cursor: pointer;
+	padding: 15px;
+	-webkit-transition: color 150ms ease;
+	transition: color 150ms ease;
+	z-index: 44;
+}
+
+.login_content {
+	height: 150px;
+	width: 100%;
+	position: relative;
+	margin-top: 40px;
+}
+
+.co_content {
+	position: relative;
+	display: inline-block;
+	width: 30%;
+	height: 40%;
+	top: 50%;
+}
+
+.co_content p {
+	margin: 20px 0 0 0;
+}
+
+.co_content p:NTH-CHILD(1) {
+	background: url('../img/3_Sign in/네이버.png') center center no-repeat;
+	height: 50px;
+	background-size: 500px 50px;
+}
+
+.co_content p:NTH-CHILD(2) {
+	background: url('../img/3_Sign in/트위터.png') center center no-repeat;
+	height: 50px;
+	background-size: 500px 50px;
+	cursor: pointer;
+}
+
+.co_content p:NTH-CHILD(3) {
+	background: url('../img/3_Sign in/페이스북.png') center center no-repeat;
+	height: 50px;
+	background-size: 500px 50px;
+}
+
+.co_content p:NTH-CHILD(4) {
+	background: url('../img/3_Sign in/인스타그램.png') center center no-repeat;
+	height: 50px;
+	background-size: 500px 50px;
+}
+
+#section2 .content .bottom {
+	position: relative;
+	display: inline-block;
+	margin-top: 50px;
+	width: 100%;
+}
+
+#section2 .content .bottom .login {
+	display: inline-block;
+	background: url('../img/3_Sign in/로그인.png') center center no-repeat;
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
+}
+
+#section2 .content .bottom .findid {
+	display: inline-block;
+	background: url('../img/3_Sign in/비밀번호.png') center center no-repeat;
+	width: 300px;
+	height: 50px;
+	cursor: pointer;
+}
+
+#section2_a {
+	
+}
+
+#section2_a .content {
+	position: relative;
+	width: 100%;
+	top: 12%;
+	height: 88%;
+	text-align: center;
+	background: url('../img/4_My page/My page_main.png') center center no-repeat;
+	background-size: 100%;
+}
+#section2_a .content .info {
+	position:relative;
+	diplay:inline-block;
+	top:5%;
+	color:white;
+}
+#section2_a .content .mypage {
+	position:relative;
+	top:22%;
+	left:32%;
+	width: 58%;
+	height: 60%;
+}
+
+#section2_a .content .mypage .mypage_left{
+	position:relative;
+	width:42%;
+	text-align:right;
+	float:left;
+	height: 100%;
+}
+#section2_a .content .mypage .mypage_right{
+	position:relative;
+	width:50%;
+	text-align:right;
+	float:right;
+	right: 10px;
+	height: 100%;
+}
+
+#section2_a .mypage p{
+	margin : 10px  10px  65px 0;
+}
+#section2_a .mypage input:hover{
+	border-bottom:1px solid red;	
+}
+#section2_a .mypage .mypage_left input{
+	width: 180px;
+	height:30px;
+	border:none;
+	outline-style:none;
+	color:white;
+	font-size:20px;
+	background-color:transparent;
+}
+
+#section2_a .mypage .mypage_right input{
+	width: 200px;
+	height:30px;
+	margin-right:15px;
+	outline-style:none;
+	border:none;
+	color:white;
+	font-size:20px;
+	background-color:transparent;
+}
