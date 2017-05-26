@@ -5,7 +5,7 @@ import re
 import csv
 
 def spider(max_pages):
-	page = 330000
+	page = 346086
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -16,63 +16,65 @@ def spider(max_pages):
 		b = bool(re.search('하의',str(a)))
 		c = bool(soup.find('table',class_='table_th_grey'))
 		if b == True and c == True:
-			#--------------------------------316744~~~
-			soupmeta = soup.head
-			allmeta = soupmeta.find_all('meta')
-			imghtml = str(allmeta[6])
-			imghtml = imghtml.replace('<meta content="','')
-			imghtml = imghtml.replace('" id="fbOgImage" property="og:image"/>','')
-			#q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
-			#imrl = re.search(imghtml,span)
-			#imgurl = []
-			#imgurlsource = imrl.group()
-			#imgurl.append(imgurlsource)
-			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
-			t2 = re.compile('<td class="goods_size_val">|<th>|</th>|<td>|</td>|<tr>|</tr>|<tbody>|</tbody>|MY')
-			brandmeta = allmeta[2]
-			strbrandmeta = str(brandmeta); strbrandmeta = strbrandmeta.replace('제품번호','')
-			strbrandmeta = strbrandmeta.replace(' ','')
-			splitbrandmeta = strbrandmeta.split(':')
-			brand = splitbrandmeta[2]
-			#brand-------------------------------------------------------------------------------------
+			spanspan =soup.find_all('span',class_='product-img')
+			span = str(spanspan)
+			
+			span = span.replace('[','');span = span.replace(']','');span = span.replace('"','')
+			span = span.replace('<','');span = span.replace('>','');span = span.replace('&','')
+			span = span.replace('(','');span = span.replace(')','');span = span.replace('\'','')
+			span = span.replace('=','');span = span.replace(';','');span = span.replace('//','')
+			span = span.replace('-','');span = span.replace(',','');span = span.replace(' ','')
+			span = span.replace('image_zoom','')
+			#print(span)
+			q = re.compile('image.musinsa.com/images/goods_img/[0-9]{8}/'+str(page)+'/'+str(page)+'_[0-9]_[0-9]{3}.jpg')
+			imrl = re.search(q,span)
+			imgurl = []
+			imgurlsource = imrl.group()
+			#print(imgurlsource)
+			imgurl.append(imgurlsource)
+			#print(imgurl)
+
+			
+			
 			all_table=soup.find('table',class_='table_th_grey')
 			theadhead=str(all_table.find('thead'))
 			tbodybody=str(all_table.find('tbody'))
-			tbodybody=tbodybody.replace('<td class="goods_size_val"></td>','<td class="goods_size_val">000</td>')
-			tbodybody=tbodybody.replace('<th>옵션없음</th>','<th>free</th>')
-			tbodybody=tbodybody.replace('<th>1 (M)</th>','<th>M</th>')
-			tbodybody=tbodybody.replace('<th>2 (L)</th>','<th>L</th>')
-			tbodybody=tbodybody.replace('<th>3 (XL)</th>','<th>XL</th>')
-			tbodybody=tbodybody.replace(' - ','-');tbodybody=tbodybody.replace('MAN ','MAN') 
-			tbodybody=tbodybody.replace('<th>S ','<th>S');tbodybody=tbodybody.replace(' BLUE','BLUE')
-			tbodybody=tbodybody.replace('<th>M ','<th>M');tbodybody=tbodybody.replace('INDIGO ','INDIGO')
-			tbodybody=tbodybody.replace('<th>L ','<th>L');tbodybody=tbodybody.replace('HICKORY ','HICKORY')
-			tbodybody=tbodybody.replace('<th>XL ','<th>XL')
-			tbodybody=tbodybody.replace(' (S)</th>','(S)</th>');tbodybody=tbodybody.replace('<th>34 ','<th>34')
-			tbodybody=tbodybody.replace(' (M)</th>','(M)</th>');tbodybody=tbodybody.replace('<th>36 ','<th>36')
-			tbodybody=tbodybody.replace(' (L)</th>','(L)</th>')
-			tbodybody=tbodybody.replace(' (XL)</th>','(XL)</th>')
-			tbodybody=tbodybody.replace('<th>ONE SIZE</th>','<th>ONESIZE</th>')
-			tbodybody=tbodybody.replace(' 플래그링 ','플래그링');tbodybody=tbodybody.replace('WOMAN ','WOMAN') 
-			tbodybody=tbodybody.replace('MELANGE GREY','MELANGEGREY');tbodybody=tbodybody.replace(' NAVY','NAVY') 
+			p = re.compile('[abdefghijknopqrtuvwyz]|<|>|/|\"|[0-9]|\=|\_')
+			# t2 = re.compile('[가-힣]')
+			# t3 = re.compile('tbody|id|class|td|th|tr|mysize|colspan|order_size_save|save_mysize|style|display:none')
+			# t4 = re.compile('save|a|href|onclick|return|false|input|name|size_info|type|\"|/|=|_')
+			# t5 = re.compile('~|!|<|>|\;|\?|\#|\'|MY|\(|\)')
+			t2 = re.compile('[가-힣]')
+			t3 = re.compile('<tr>|</tr>|<th>|</th>|</td>|<td class="goods_size_val">|</tbody>|<tbody>|MY|<tr id="mysize">|<td colspan="6">|~!|</a>|\?')
+			t4 = re.compile('"|\'|#|:|=|;|_|<|>|/')
+			t5 = re.compile('[a-z]')
 			alphaBet = p.findall(theadhead)
 			for i in alphaBet:
 				theadhead = theadhead.replace(i,'')
 			theadhead = theadhead.replace('clssml','')
 			theadhead = theadhead.replace('m  l','')
 			headers = theadhead.split()
-			#header number count
 			if len(headers)==6:
 				print(headers)
 				alphaBet1 = t2.findall(tbodybody)
+				alphaBet2 = t3.findall(tbodybody)
+				alphaBet3 = t4.findall(tbodybody)
+				alphaBet4 = t5.findall(tbodybody)
 				for i in alphaBet1:
 					tbodybody = tbodybody.replace(i,'')
-				tbodybody = tbodybody.replace('<tr id="mysize">','');tbodybody = tbodybody.replace('<td colspan="6">가지고 계신 제품의 실측을 입력해 보세요~!','')
-				tbodybody = tbodybody.replace('<tr class="order_size_save" id="save_mysize" style="display:none">','')
-				tbodybody = tbodybody.replace('<a href="#" onclick="save_size(\'6\'); return false;">위 구매 내역의 사이즈를 저장','')
-				tbodybody = tbodybody.replace('<a href="#" onclick="save_size(\'23\'); return false;">위 구매 내역의 사이즈를 저장','')
-				tbodybody = tbodybody.replace('<td colspan="6">','');tbodybody = tbodybody.replace('하시겠습니까?</a>','')
-				tbodybody = tbodybody.replace('<input name="size_info" type="hidden" value=""/>','')
+				for i in alphaBet2:
+					tbodybody = tbodybody.replace(i,'')
+				for i in alphaBet3:
+					tbodybody = tbodybody.replace(i,'')
+				for i in alphaBet4:
+					tbodybody = tbodybody.replace(i,'')
+				tbodybody = tbodybody.replace('(23)',''); tbodybody = tbodybody.replace('(6)','')
+				# tbodybody = tbodybody.replace('sve',''); tbodybody = tbodybody.replace('size23','')
+				# tbodybody = tbodybody.replace('size',''); tbodybody = tbodybody.replace('482830',''); tbodybody = tbodybody.replace('503134','')
+				# tbodybody = tbodybody.replace('flse','');	tbodybody = tbodybody.replace('nmeinfo','')
+				# tbodybody = tbodybody.replace('hden','');tbodybody = tbodybody.replace('vlue','')
+				# tbodybody = tbodybody.replace('goodsvl','');tbodybody = tbodybody.replace(' 6','')
+				# tbodybody = tbodybody.replace('\n','  ')
 				#print(tbodybody)
 				rows = tbodybody.split()
 				#print(rows)
@@ -122,17 +124,16 @@ def spider(max_pages):
 				outfile.close()
 
 				table1_row = []
-				table1_row.append(imghtml)
+				table1_row.append(imgurlsource)
 				table1_row.append(link)
 				table1_row.append(pantsno)
-				table1_row.append(brand)
 				print(table1_row)
 
 				outfile2 = open('table1.csv','a',encoding='utf-8')
 				#outfile2 = open(str(fixpage)+'~'+str(max_pages-1)+'table1.csv','a',encoding='utf-8')
 				write_outfile2 = csv.writer(outfile2)
 				write_outfile2.writerow(table1_row)
-				outfile2.close(); print("Ok! Done!")
+				outfile2.close()
 			else:
 				print("Column is not matching,, Maybe This is not pants?")
 				page+=1
@@ -140,4 +141,4 @@ def spider(max_pages):
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
 		
-spider(330001)
+spider(347001)
