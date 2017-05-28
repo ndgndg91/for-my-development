@@ -1,0 +1,6 @@
+*{
+  margin: 0;
+}
+.restaurant-photos-item{
+  display: inline-block;
+}
