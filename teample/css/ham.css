@@ -57,7 +57,7 @@
           padding: 0;
         }
 
-          #header nav ul li a {
+          #header nav ul li a/*, #header nav ul li:nth-child(3) a*/ {
             display: block;
             position: relative;
             height: 3em;

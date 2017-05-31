@@ -13,6 +13,10 @@ margin-top: 20px;
 /*li{
   padding: 10px;
 }*/
+header nav #logospan{
+  display: inline-block;
+  float: left;
+}
 header{
   margin: -5px;
   width:100%;
@@ -326,7 +330,8 @@ opacity:0.8;
   margin-top: 30px;
   color: white;
   width: 500px;
-  border: 1px solid white;
+  height: 250px;
+  /*border: 1px solid white;*/
 }
 #foot_table table tr td{
   width: 220px;
