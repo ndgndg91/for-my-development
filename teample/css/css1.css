@@ -75,7 +75,7 @@ font.bigfont{
   background-color: #ff8f00;
 }
 
-#logospan, .green_window, #second span,#third span, #footer_span{
+#logospan, .green_window, #footer_span{
   margin-left: 25px;
 }
 #second,#third{
@@ -83,6 +83,30 @@ font.bigfont{
   height: 520px;
   white-space: nowrap;
   overflow-x:hidden;
+}
+.media_tasty, .media_tasty1, .media_tasty_korea{
+  display:inline;
+}
+.media_tasty:first-child , .media_tasty1:first-child, .media_tasty_korea:first-child{
+  margin-left: 90px;
+}
+.media_tasty:nth-child(2){
+  margin-left: 1170px;
+}
+.media_tasty:nth-child(3){
+  margin-left: 1170px;
+}
+.media_tasty1:nth-child(2){
+    margin-left: 1140px;
+}
+.media_tasty1:nth-child(3){
+    margin-left: 1140px;
+}
+.media_tasty_korea:nth-child(2){
+    margin-left: 1230px;
+}
+.media_tasty_korea:nth-child(3){
+    margin-left: 1220px;
 }
 #second_media, #third_media{
   white-space: nowrap;
@@ -115,7 +139,102 @@ font.bigfont{
 .example:hover{
   opacity: 0.9;
 }
-
+ .example_ul_kor, .example_ul_kor2, .example_ul_jap, .example_ul_jap3, .example_ul_sna,
+ .example_ul_sna2, .example_ul_sna3, .example_ul_alc, .example_ul_alc2, .example_ul_alc3{
+   margin-left: 160px;
+   margin-top: 20px;
+ }
+  .example_ul_jap2{
+    margin-left: 175px; margin-top: 20px;
+  }
+ .example_ul_chi,.example_ul_chi2{
+   margin-left: 170px;
+   margin-top: 20px;
+ }
+.example_ul_kor li, .example_ul_kor2 li, .example_ul_chi li, .example_ul_chi2 li,
+.example_ul_jap li, .example_ul_jap2 li, .example_ul_jap3 li, .example_ul_sna li,
+.example_ul_sna2 li, .example_ul_sna3 li, .example_ul_alc li, .example_ul_alc2 li,
+.example_ul_alc3 li{
+  display: inline;
+}
+.example_ul_alc3 li:nth-child(2){
+  margin-left: 370px;
+}
+.example_ul_alc3 li:nth-child(3){
+  margin-left: 370px;
+}
+.example_ul_alc2 li:nth-child(2){
+  margin-left: 390px;
+}
+.example_ul_alc2 li:nth-child(3){
+  margin-left: 350px;
+}
+.example_ul_alc li:nth-child(2){
+  margin-left: 375px;
+}
+.example_ul_alc li:nth-child(3){
+  margin-left: 375px;
+}
+.example_ul_sna3 li:nth-child(2){
+  margin-left: 330px;
+}
+.example_ul_sna3 li:nth-child(3){
+  margin-left: 370px;
+}
+.example_ul_sna2 li:nth-child(2){
+  margin-left: 330px;
+}
+.example_ul_sna2 li:nth-child(3){
+  margin-left: 330px;
+}
+.example_ul_sna li:nth-child(2){
+  margin-left: 380px;
+}
+.example_ul_sna li:nth-child(3){
+  margin-left: 350px;
+}
+.example_ul_jap3 li:nth-child(2){
+  margin-left: 320px;
+}
+.example_ul_jap3 li:nth-child(3){
+  margin-left: 335px;
+}
+.example_ul_jap2 li:nth-child(2){
+  margin-left: 380px;
+}
+.example_ul_jap2 li:nth-child(3){
+  margin-left: 360px;
+}
+.example_ul_jap li:nth-child(2){
+  margin-left: 360px;
+}
+.example_ul_jap li:nth-child(3){
+  margin-left: 350px;
+}
+.example_ul_chi2 li:nth-child(2){
+  margin-left: 385px;
+}
+.example_ul_chi2 li:nth-child(3){
+  margin-left: 380px;
+}
+.example_ul_chi li:nth-child(2){
+  margin-left: 370px;
+}
+.example_ul_chi li:nth-child(3){
+  margin-left: 360px;
+}
+.example_ul_kor li:nth-child(2) {
+  margin-left: 350px;
+}
+.example_ul_kor2 li:nth-child(2){
+  margin-left: 370px;
+}
+.example_ul_kor li:nth-child(3){
+  margin-left: 310px;
+}
+.example_ul_kor2 li:nth-child(3){
+  margin-left: 370px;
+}
 .example_ul{
   margin-left: 160px;
   margin-top: 20px;
@@ -132,7 +251,7 @@ font.bigfont{
   margin-top: 20px;
   margin-left: 160px;
 }
-.example_ul li{
+.example_ul li {
   display: inline;
   margin:0 340px 0 0;
   padding: 10px;
@@ -181,6 +300,9 @@ opacity:0.8;
   display: inline-block;
   float: left;
 }
+#content ul,p{
+  margin:25px;
+}
 
 #footer{
   clear: both;
@@ -200,13 +322,13 @@ opacity:0.8;
   float: left;
   margin: 30px 0 0 30px;
 }
-#footer_table{
+#foot_table{
   margin-top: 30px;
   color: white;
   width: 500px;
   border: 1px solid white;
 }
-#footer_table td{
+#foot_table table tr td{
   width: 220px;
   padding: 10px;
 }
@@ -248,4 +370,8 @@ border:1px solid #ffad41; -webkit-border-radius: 50px; -moz-border-radius: 50px;
     -ms-transform:scale(1.2);
     -o-transform:scale(1.2);
     transform:scale(1.2);
+}
+
+figure{
+  margin:0 30px 0 30px;
 }
