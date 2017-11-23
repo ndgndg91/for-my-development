@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen 
 import re
 import csv
+from http.client import IncompleteRead
 
 def spider(max_pages):
-	page = 346086
+	page = 349931
 	fixpage = page
 	while page < max_pages:
 		link='http://store.musinsa.com/app/product/detail/'+str(page)+'/0'
@@ -140,5 +141,6 @@ def spider(max_pages):
 		else:
 			print("This page is not about pants and i'm gonna scrap next page")
 			page+=1
-		
-spider(347001)
+
+spider(350001)
+
