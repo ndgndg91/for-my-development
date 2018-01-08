@@ -213,9 +213,9 @@
         </div>
       </div>
     </div>
-    <center><button class="button_example" onclick="fnMove2('4')"></button>&nbsp;&nbsp;
-    <button class="button_example" onclick="fnMove2('5')"></button>&nbsp;&nbsp;
-    <button class="button_example" onclick="fnMove2('6')"></button></center>
+    <center><button class="button_example" onclick="fnMove2('1')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove2('2')"></button>&nbsp;&nbsp;
+    <button class="button_example" onclick="fnMove2('3')"></button></center>
         <br><br><hr><br>
 
     <div id="fourth">
@@ -273,6 +273,7 @@
     <script src="js/skel.min.js"></script>
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
+	<script src="js/fnmove.js"></script>
     <script>
     function doImgPop(img){
      img1= new Image();
@@ -298,14 +299,6 @@
      imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
      imgWin.document.close();
     }
-    function fnMove(seq){
-           var offset = $("#div" + seq).offset();
-           $('#second, #second_media').animate({scrollLeft : offset.left}, 400);
-       }
-    function fnMove2(seq){
-          var offset = $("#div" + seq).offset();
-          $('#third, #third_media').animate({scrollLeft : offset.left}, 400);
-      }
 
       $(".hover").mouseleave(
   function () {
