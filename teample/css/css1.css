@@ -95,22 +95,22 @@ font.bigfont{
   margin-left: 90px;
 }
 .media_tasty:nth-child(2){
-  margin-left: 1170px;
+  margin-left: 82%;
 }
 .media_tasty:nth-child(3){
-  margin-left: 1170px;
+  margin-left: 82%;
 }
 .media_tasty1:nth-child(2){
-    margin-left: 1140px;
+    margin-left: 80%;
 }
 .media_tasty1:nth-child(3){
-    margin-left: 1140px;
+    margin-left: 80%;
 }
 .media_tasty_korea:nth-child(2){
-    margin-left: 1230px;
+    margin-left: 85%;
 }
 .media_tasty_korea:nth-child(3){
-    margin-left: 1220px;
+    margin-left: 85%;
 }
 #second_media, #third_media{
   white-space: nowrap;
@@ -131,6 +131,7 @@ font.bigfont{
 }*/
 .sample_image{
   display: inline-block;
+  width: 33%;
 }
 .example{
   width: 350px;
@@ -162,82 +163,82 @@ font.bigfont{
   display: inline;
 }
 .example_ul_alc3 li:nth-child(2){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul_alc3 li:nth-child(3){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul_alc2 li:nth-child(2){
-  margin-left: 390px;
+  margin-left: 32%;
 }
 .example_ul_alc2 li:nth-child(3){
-  margin-left: 350px;
+  margin-left: 29%;
 }
 .example_ul_alc li:nth-child(2){
-  margin-left: 375px;
+  margin-left: 31%;
 }
 .example_ul_alc li:nth-child(3){
-  margin-left: 375px;
+  margin-left: 31%;
 }
 .example_ul_sna3 li:nth-child(2){
-  margin-left: 330px;
+  margin-left: 28%;
 }
 .example_ul_sna3 li:nth-child(3){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul_sna2 li:nth-child(2){
-  margin-left: 330px;
+  margin-left: 28%;
 }
 .example_ul_sna2 li:nth-child(3){
-  margin-left: 330px;
+  margin-left: 28%;
 }
 .example_ul_sna li:nth-child(2){
-  margin-left: 380px;
+  margin-left: 31%;
 }
 .example_ul_sna li:nth-child(3){
-  margin-left: 350px;
+  margin-left: 28%;
 }
 .example_ul_jap3 li:nth-child(2){
-  margin-left: 320px;
+  margin-left: 26%;
 }
 .example_ul_jap3 li:nth-child(3){
-  margin-left: 335px;
+  margin-left: 27%;
 }
 .example_ul_jap2 li:nth-child(2){
-  margin-left: 380px;
+  margin-left: 31%;
 }
 .example_ul_jap2 li:nth-child(3){
-  margin-left: 360px;
+  margin-left: 30%;
 }
 .example_ul_jap li:nth-child(2){
-  margin-left: 360px;
+  margin-left: 30%;
 }
 .example_ul_jap li:nth-child(3){
-  margin-left: 350px;
+  margin-left: 29%;
 }
 .example_ul_chi2 li:nth-child(2){
-  margin-left: 385px;
+  margin-left: 32%;
 }
 .example_ul_chi2 li:nth-child(3){
-  margin-left: 380px;
+  margin-left: 31%;
 }
 .example_ul_chi li:nth-child(2){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul_chi li:nth-child(3){
-  margin-left: 360px;
+  margin-left: 30%;
 }
 .example_ul_kor li:nth-child(2) {
-  margin-left: 350px;
+  margin-left: 29%;
 }
 .example_ul_kor2 li:nth-child(2){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul_kor li:nth-child(3){
-  margin-left: 310px;
+  margin-left: 25%;
 }
 .example_ul_kor2 li:nth-child(3){
-  margin-left: 370px;
+  margin-left: 30%;
 }
 .example_ul{
   margin-left: 160px;
@@ -257,22 +258,22 @@ font.bigfont{
 }
 .example_ul li {
   display: inline;
-  margin:0 340px 0 0;
+  margin:0 30% 0 0;
   padding: 10px;
 }
 .example_ul2 li{
   display: inline;
-  margin:0 300px 0 0;
+  margin:0 28% 0 0;
   padding: 10px;
 }
 .example_ul3 li{
   display: inline;
-  margin:0 310px 0 0;
+  margin:0 27% 0 0;
   padding: 10px;
 }
 .example_ul4 li{
   display: inline;
-  margin:0 350px 0 0;
+  margin:0 30% 0 0;
   padding: 10px;
 }
 .example_ul2 li:last-child{
