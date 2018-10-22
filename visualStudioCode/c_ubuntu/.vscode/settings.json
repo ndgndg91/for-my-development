@@ -1,7 +1,0 @@
-{
-    "files.encoding": "euckr",
-    "C_Cpp.errorSquiggles": "Enabled",
-    "files.associations": {
-        "stdio.h": "c"
-    }
-}
