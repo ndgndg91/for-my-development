@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <ul>
+    <li>1~10</li>
+    <li>11~20</li>
+    <li>21~30</li>
+  </ul>
+  <script type="text/javascript">
+    var nodes = document.querySelector('ul');
+    for (let i = 0; i < nodes.children.length; i++) {
+      var el = nodes.children[i];
+      el.onclick = function(event) {
+        event.target.style.backgroundColor = "blue";
+        console.log(i);
+      }
+    };
+  </script>
+</body>
+
+</html>
