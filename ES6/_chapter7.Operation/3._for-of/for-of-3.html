@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <ul>
+      <li>첫 번째</li>
+      <li>두 번째</li>
+      <li>세 번째</li>
+    </ul>
+    <script type="text/javascript">
+      let nodes = document.querySelectorAll("li");
+      for(var node of nodes){
+        console.log(node.textContent);
+      }
+    </script>
+  </body>
+</html>
