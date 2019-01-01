@@ -9,20 +9,20 @@ console.log(values);
 //변수 이름을 사용하여 프로퍼티 값을 설정할 수 있다.
 
 
-let obj ={
+let objES5 ={
   getTotal : function(param){
     return param + 123;
   }
 };
+console.log(objES5.getTotal(200));
 
-
-let obj = {
+let objES6 = {
   getTotal(param){
     return param + 123;
   }
 };
 
-console.log(obj.getTotal(400));
+console.log(objES6.getTotal(400));
 //523
 
 
