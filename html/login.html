@@ -296,14 +296,17 @@ input[type=text]:placeholder {
 
       </div>
     </div>
+    <!-- , -->
+    <!-- -->
     <script type="text/javascript">
       $(document).ready(function(){
-        $("#loginBtn").on('click', (arguments) => {;
+        $("#loginBtn").on('click', (arguments) => {
           $('[name="uPassword"]').val(window.btoa($('[name="uPassword"]').val()));
           var data = $('#loginForm').serializeArray();
           console.log(data);
           var request = $.ajax({
-            url: "http://localhost:9090/accbook-0.0.1/user/login",
+            // url : "http://localhost:9090/user/login",
+            url: "http://localhost:8080/accbook/user/login",
             method: "POST",
             data: data,
             dataType : "json"
@@ -311,11 +314,17 @@ input[type=text]:placeholder {
 
           request.done(function( msg ) {
             console.log(msg);
-            alert(msg.message);
+            if(msg.status == 'Success'){
+              alert(msg.message);
+              location.href = "index.html";
+            }else{
+              alert(msg.errorMessage);
+            }
           });
 
           request.fail(function( jqXHR, textStatus ) {
-            alert( "Request failed: " + textStatus );
+            console.log(jqXHR);
+            console.log(textStatus);
           });
 
           request.always(function(){

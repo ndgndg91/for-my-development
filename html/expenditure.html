@@ -44,7 +44,7 @@
           var data = $('#eForm').serializeArray();
           console.log(data);
           var request = $.ajax({
-            url: "http://localhost:9090/accbook-0.0.1/expenditure/in",
+            url: "http://localhost:8080/accbook/expenditure/in",
             method: "POST",
             data: data,
             dataType : "json"

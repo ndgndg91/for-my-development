@@ -52,7 +52,7 @@
           var data = $('#whForm').serializeArray();
           console.log(data);
           var request = $.ajax({
-            url: "http://localhost:9090/accbook-0.0.1/workHistory/in",
+            url: "http://localhost:8080/accbook/workHistory/in",
             method: "POST",
             data: data,
             dataType : "json"
