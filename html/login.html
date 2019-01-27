@@ -314,11 +314,14 @@ input[type=text]:placeholder {
 
           request.done(function( msg ) {
             console.log(msg);
-            if(msg.status == 'Success'){
-              alert(msg.message);
+            console.log(msg.apiResponse);
+            console.log(msg.apiResponse.status);
+            if(msg.apiResponse.status == 'Success'){
+              alert(msg.apiResponse.message);
+              sessionStorage.setItem("loginUser",JSON.stringify(msg.loginUser));
               location.href = "index.html";
             }else{
-              alert(msg.errorMessage);
+              alert(msg.apiResponse.errorMessage);
             }
           });
 
