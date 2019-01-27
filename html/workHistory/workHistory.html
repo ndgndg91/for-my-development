@@ -2,8 +2,9 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>메인</title>
-    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>근무 기록</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -19,14 +20,14 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkExpenditure" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               지출
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkExpenditure">
-              <a class="dropdown-item" href="./expenditure/expenditureWrite.html">지출 기록</a>
+              <a class="dropdown-item" href="../expenditure/expenditureWrite.html">지출 기록</a>
               <a class="dropdown-item" href="#">지출 수정</a>
               <a class="dropdown-item" href="#">지출 삭제</a>
               <a class="dropdown-item" href="#">지출 조회</a>
@@ -48,7 +49,7 @@
               근무 일지
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkWorkHistory">
-              <a class="dropdown-item" href="./workHistory/workHistoryWrite.html">근무일지 기록</a>
+              <a class="dropdown-item" href="workHistoryWrite.html">근무일지 기록</a>
               <a class="dropdown-item" href="#">근무일지 수정</a>
               <a class="dropdown-item" href="#">근무일지 삭제</a>
               <a class="dropdown-item" href="#">근무일지 조회</a>
@@ -73,19 +74,85 @@
     </nav>
     <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
       <div class="container">
-        <h1 class="display-3" id="welcomeMain"> 님 환영합니다!</h1>
-        <p class="lead">하루하루 나의 생활을 꼼꼼히 기록하자!</p>
-        <p class="lead">내 삶을 기록하고 되돌아보자.</p>
+        <h1 class="display-3">근무 기록</h1>
+        <p class="lead">하루하루 몇시간 일했는지 꼼꼼히 기록하자!</p>
+        <p class="lead"> 내 시간은 내가 관리한다.</p>
       </div>
+  </div>
+    <div class="container-fluid">
+      <form method="post" action="http://localhost:9090/accbook-0.0.1/workHistory/in" name="whForm" id="whForm">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무일</label>
+          <input type="text" id="whDate" name="whDate" class="form-control" placeholder="xxxx-xx-xx">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무 시작시간</label>
+          <input type="text" class="form-control" name="whStartTime" placeholder="xx:xx">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무 종료시간</label>
+          <input type="text" class="form-control" name="whEndTime" placeholder="xx:xx">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무 시간</label>
+          <input type="text" class="form-control" name="whHour" placeholder="실수형">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무 장소</label>
+          <input type="text" class="form-control" name="whPlace" placeholder="근무 장소">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">근무 내용</label>
+          <input type="text" class="form-control" name="whWorkContent" placeholder="근무 내용">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="submitWh">기록</button>
+        </div>
+      </form>
     </div>
-    <div class="container-fluid" style="background-color:#fff2ed">
-
-
     <script type="text/javascript">
-    $(document).ready(function(){
-      var loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
-      $('#welcomeMain').text(loginUser.uNick +' 님 환엽합니다!');
-    });
+      $(document).ready(() => {
+        $('#submitWh').on('click', (arguments) => {
+          var data = $('#whForm').serializeArray();
+          console.log(data);
+          var request = $.ajax({
+            url: "http://localhost:9090/accbook-0.0.1/workHistory/in",
+            method: "POST",
+            data: data,
+            dataType : "json"
+          });
+
+          request.done(function( msg ) {
+            console.log(msg);
+            alert(msg.message);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR);
+            console.log(jqXHR.status);
+            console.log(jqXHR.statusText);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = '연결 불가. 네트워크를 확인하세요.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 401) {
+                msg = 'Unauthorized. [401]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert( "Request failed: " + msg );
+          });
+        });
+      });
     </script>
   </body>
 </html>
