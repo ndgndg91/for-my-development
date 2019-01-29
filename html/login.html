@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>로그인</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <style media="screen">
 
@@ -279,7 +279,7 @@ input[type=text]:placeholder {
 
         <!-- Icon -->
         <div class="fadeIn first">
-          <img src="diary.png" id="icon" alt="User Icon" />
+          <img src="./img/diary.png" id="icon" alt="User Icon" />
         </div>
 
         <!-- Login Form -->
@@ -300,13 +300,13 @@ input[type=text]:placeholder {
     <!-- -->
     <script type="text/javascript">
       $(document).ready(function(){
+        sessionStorage.clear();
         $("#loginBtn").on('click', (arguments) => {
           $('[name="uPassword"]').val(window.btoa($('[name="uPassword"]').val()));
           var data = $('#loginForm').serializeArray();
           console.log(data);
           var request = $.ajax({
-            // url : "http://localhost:9090/user/login",
-            url: "http://localhost:8080/accbook/user/login",
+            url : "http://localhost:9090/user/login",
             method: "POST",
             data: data,
             dataType : "json"
@@ -336,6 +336,8 @@ input[type=text]:placeholder {
                 msg = 'Requested page not found. [404]';
             } else if (jqXHR.status == 401) {
                 msg = 'Unauthorized. [401]';
+            } else if (jqXHR.status == 498) {
+                msg = 'Not Found SecretCode [498]';
             } else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {

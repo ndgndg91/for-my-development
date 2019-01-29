@@ -8,6 +8,10 @@
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- morris -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff4f0;">
@@ -70,8 +74,11 @@
           </li>
         </ul>
       </div>
+      <!-- <form class="form-inline">
+          <button class="btn my-2 my-sm-0" type="submit" style="background-color: #ff733f;color: white;">Log Out</button>
+      </form> -->
     </nav>
-    <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
+    <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca;margin-bottom: 0;">
       <div class="container">
         <h1 class="display-3" id="welcomeMain"> 님 환영합니다!</h1>
         <p class="lead">하루하루 나의 생활을 꼼꼼히 기록하자!</p>
@@ -79,12 +86,61 @@
       </div>
     </div>
     <div class="container-fluid" style="background-color:#fff2ed">
-
+      <div class="row">
+        <div class="col">
+          1 of 3
+        </div>
+        <div class="col">
+          2 of 3
+        </div>
+        <div class="col">
+          3 of 3
+        </div>
+      </div>
+    </div>
 
     <script type="text/javascript">
     $(document).ready(function(){
       var loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
       $('#welcomeMain').text(loginUser.uNick +' 님 환엽합니다!');
+      var request = $.ajax({
+            url : "http://localhost:9090/expenditure/sel/sumBy3Year",
+            method: "GET",
+            data: {'temp1':loginUser.uEmail,
+                    'temp2':'ndgndg91'},
+            dataType : "json"
+          });
+
+          request.done(function( msg ) {
+            console.log(msg);
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR);
+            console.log(jqXHR.status);
+            console.log(jqXHR.statusText);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = '연결 불가. 네트워크를 확인하세요.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 401) {
+                msg = 'Unauthorized. [401]';
+            } else if (jqXHR.status == 498) {
+                msg = 'Not Found SecretCode [498]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert( "Request failed: " + msg );
+          });
     });
     </script>
   </body>
