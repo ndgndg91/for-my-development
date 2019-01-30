@@ -78,20 +78,18 @@
           <button class="btn my-2 my-sm-0" type="submit" style="background-color: #ff733f;color: white;">Log Out</button>
       </form> -->
     </nav>
-    <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca;margin-bottom: 0;">
+    <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca;">
       <div class="container">
         <h1 class="display-3" id="welcomeMain"> 님 환영합니다!</h1>
         <p class="lead">하루하루 나의 생활을 꼼꼼히 기록하자!</p>
         <p class="lead">내 삶을 기록하고 되돌아보자.</p>
       </div>
     </div>
-    <div class="container-fluid" style="background-color:#fff2ed">
-      <div class="row">
-        <div class="col">
-          1 of 3
+    <div class="container-fluid">
+      <div class="row" style="height:400px;">
+        <div class="col" id="round3Year">
         </div>
-        <div class="col">
-          2 of 3
+        <div class="col" id="barAlltype">
         </div>
         <div class="col">
           3 of 3
@@ -102,20 +100,118 @@
     <script type="text/javascript">
     $(document).ready(function(){
       var loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
-      $('#welcomeMain').text(loginUser.uNick +' 님 환엽합니다!');
+      if(null == loginUser){
+        alert('로그인이 필요합니다!');
+        location.href = 'login.html';
+      }else{
+        $('#welcomeMain').text(loginUser.uNick +' 님 환엽합니다!');
+      }
+      
       var request = $.ajax({
-            url : "http://localhost:9090/expenditure/sel/sumBy3Year",
+            // url : "http://localhost:9090/expenditure/sel/sumBy3Year",
+            url: "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",
-            data: {'temp1':loginUser.uEmail,
-                    'temp2':'ndgndg91'},
+            data: {'loginEmail':loginUser.uEmail,
+                    'secretCode':'9090'},
             dataType : "json"
           });
 
           request.done(function( msg ) {
             console.log(msg);
+            if(msg.returnCode == '0000'){
+              let now = new Date();
+              let nowYear = now.getFullYear();
+              let now_1 = nowYear - 1;
+              let now_2 = now_1 - 1;
+              Morris.Donut({
+                element: 'round3Year',
+                data: [
+                  {label: nowYear+'년', value: msg.thisYear},
+                  {label: now_1+"년", value: msg.lastYear},
+                  {label: now_2+"년", value: msg.theYearBefore}
+                ],
+                backgroundColor: '#fff4f0',
+                labelColor: 'black',
+                colors: [
+                  '#ff6026',
+                  '#ff733f',
+                  '#ff8559',
+                  '#ff9872'
+                ],
+                resize: true,
+                formatter: function (x) { return new Intl.NumberFormat().format(x) + "원"}
+              });
+            }else{
+              alert('서버가 불안정 합니다.');
+            }
           });
 
           request.fail(function( jqXHR, textStatus ) {
+            console.log(jqXHR);
+            console.log(jqXHR.status);
+            console.log(jqXHR.statusText);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = '연결 불가. 네트워크를 확인하세요.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 401) {
+                msg = 'Unauthorized. [401]';
+            } else if (jqXHR.status == 498) {
+                msg = 'Not Found SecretCode [498]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            alert( "Request failed: " + msg );
+          });
+
+          var request2 = $.ajax({
+            // url : "http://localhost:9090/expenditure/sel/allType",
+            url: "http://localhost:9090/expenditure/sel/allType",
+            method: "GET",
+            data: {'loginEmail':loginUser.uEmail,
+                    'secretCode':'9090'},
+            dataType : "json"
+          });
+
+          request2.done(function( msg ) {
+            console.log(msg);
+            Morris.Bar({
+              element: 'barAlltype',
+              data: [
+                { type: '미용비', sum: msg.beauty },
+                { type: '의류비', sum: msg.cloth },
+                { type: '통신비', sum: msg.communication },
+                { type: '유흥비', sum: msg.enter },
+                { type: '식비', sum: msg.food },
+                { type: '생활비', sum: msg.living },
+                { type: '데이트비', sum: msg.love },
+                { type: '의료비', sum: msg.medical },
+                { type: '기타', sum: msg.other },
+                { type: '자기계발비', sum: msg.self },
+                { type: '교통비', sum: msg.trans },
+              ],
+              xkey: 'type',
+              ykeys: ['sum'],
+              labels: ['총 지출'],
+              barColors: [
+                  '#ff6026',
+                  '#ff733f',
+                ],
+              resize:true,
+              xLabelAngle: 45,
+            });
+          });
+
+          request2.fail(function( jqXHR, textStatus ) {
             console.log(jqXHR);
             console.log(jqXHR.status);
             console.log(jqXHR.statusText);
