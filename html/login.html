@@ -309,8 +309,7 @@ input[type=text]:placeholder {
             url : "http://localhost:9090/user/login",
             method: "POST",
             data: data,
-            crossDomain: true,
-            dataType : "jsonp"
+            dataType : "json"
           });
 
           request.done(function( msg ) {
