@@ -112,7 +112,8 @@
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
-            dataType : "json"
+            crossDomain: true,
+            dataType : "jsonp"
           });
 
           request.done(function( msg ) {
@@ -155,7 +156,8 @@
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
-            dataType : "json"
+            crossDomain: true,
+            dataType : "jsonp"
           });
 
           request2.done(function( msg ) {
@@ -197,7 +199,8 @@
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
-            dataType : "json"
+            crossDomain: true,
+            dataType : "jsonp"
           });
 
           request3.done(function( msg ) {
