@@ -87,12 +87,11 @@
     </div>
     <div class="container-fluid">
       <div class="row" style="height:400px;">
-        <div class="col" id="round3Year">
+        <div class="col-6 col-md-4" id="round3Year">
         </div>
-        <div class="col" id="barAlltype">
+        <div class="col-6 col-md-4" id="barAlltype">
         </div>
-        <div class="col">
-          3 of 3
+        <div class="col-6 col-md-4" id="lineLast10Days">
         </div>
       </div>
     </div>
@@ -112,7 +111,7 @@
             url: "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
-                    'secretCode':'9090'},
+                    'secretCode':'ndgndg91'},
             dataType : "json"
           });
 
@@ -147,30 +146,7 @@
           });
 
           request.fail(function( jqXHR, textStatus ) {
-            console.log(jqXHR);
-            console.log(jqXHR.status);
-            console.log(jqXHR.statusText);
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = '연결 불가. 네트워크를 확인하세요.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 401) {
-                msg = 'Unauthorized. [401]';
-            } else if (jqXHR.status == 498) {
-                msg = 'Not Found SecretCode [498]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            alert( "Request failed: " + msg );
+            processFail(jqXHR);
           });
 
           var request2 = $.ajax({
@@ -178,7 +154,7 @@
             url: "http://localhost:9090/expenditure/sel/allType",
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
-                    'secretCode':'9090'},
+                    'secretCode':'ndgndg91'},
             dataType : "json"
           });
 
@@ -204,7 +180,7 @@
               labels: ['총 지출'],
               barColors: [
                   '#ff6026',
-                  '#ff733f',
+                  '#ff733f'
                 ],
               resize:true,
               xLabelAngle: 45,
@@ -212,10 +188,62 @@
           });
 
           request2.fail(function( jqXHR, textStatus ) {
-            console.log(jqXHR);
-            console.log(jqXHR.status);
-            console.log(jqXHR.statusText);
-            var msg = '';
+            processFail(jqXHR);
+          });
+
+          var request3 = $.ajax({
+            // url : "http://localhost:9090/expenditure/sel/last10Days",
+            url: "http://localhost:9090/expenditure/sel/last10Days",
+            method: "GET",
+            data: {'loginEmail':loginUser.uEmail,
+                    'secretCode':'ndgndg91'},
+            dataType : "json"
+          });
+
+          request3.done(function( msg ) {
+            console.log(msg);
+            let tempMap = new Map();
+            for(let ex of msg){
+              if(tempMap.get(ex.eDate) == undefined){
+                tempMap.set(ex.eDate, Number(ex.eAmount));
+              }else{
+                let tempAmount = Number(tempMap.get(ex.eDate));
+                tempAmount += Number(tempAmount) + Number(ex.eAmount);
+                tempMap.set(ex.eDate, tempAmount);
+              }
+            }
+            console.log(tempMap);
+            let lineData = new Array();
+            for (let [key, value] of tempMap) {
+              console.log(key + '^' + value);
+              lineData.push({day : key, total : value});
+            }
+            console.log(lineData);
+            Morris.Line({
+              element: 'lineLast10Days',
+              data: lineData,
+              xkey: 'day',
+              ykeys: ['total'],
+              labels: ['하루 지출'],
+              resize:true,
+              xLabelAngle: 45,
+              lineColors: [
+                '#ff6026',
+                '#ff733f'
+              ]
+            });
+          });
+
+          request3.fail(function( jqXHR, textStatus ) {
+            processFail(jqXHR);
+          });
+    });
+
+    function processFail(jqXHR){
+      console.log(jqXHR);
+      console.log(jqXHR.status);
+      console.log(jqXHR.statusText);
+      var msg = '';
             if (jqXHR.status === 0) {
                 msg = '연결 불가. 네트워크를 확인하세요.';
             } else if (jqXHR.status == 404) {
@@ -236,8 +264,7 @@
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             alert( "Request failed: " + msg );
-          });
-    });
+    }
     </script>
   </body>
 </html>
