@@ -82,20 +82,24 @@
     <div class="container-fluid">
       <form method="post" action="http://ndgndg91.synology.me:7070/accbook-0.0.1/expenditure/in" name="eForm" id="eForm">
         <div class="form-group">
-          <label for="exampleFormControlInput1">지출일</label>
+          <label for="eDate">지출일</label>
           <input type="text" id="eDate" name="eDate" class="form-control" placeholder="xxxx-xx-xx">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">지출종류</label>
-          <input type="text" class="form-control" name="eType" placeholder="식비, 교통비, 유흥비, 의료비">
+          <label for="eType">지출종류</label>
+          <input type="text" id="eType" class="form-control" name="eType" placeholder="식비, 교통비, 유흥비, 의료비">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">지출명</label>
-          <input type="text" class="form-control" name="eName" placeholder="아메리카노">
+          <label for="eName">지출명</label>
+          <input type="text" id="eName" class="form-control" name="eName" placeholder="아메리카노">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">지출 금액</label>
-          <input type="text" class="form-control" name="eAmount" placeholder="정수형">
+          <label for="eAmount">지출 금액</label>
+          <input type="text" id="eAmount" class="form-control" name="eAmount" placeholder="정수형">
+        </div>
+        <div class="form-group">
+          <label for="eMethod">지출 방법</label>
+          <input type="text" id="eMethod" class="form-control" name="eMethod" placeholder="ex) 신용카드, 직불카드">
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-primary btn-lg btn-block" id="submitE">기록</button>
@@ -105,10 +109,13 @@
     <script type="text/javascript">
       $(document).ready(() => {
         $('#submitE').on('click', (arguments) => {
+          let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
           var data = $('#eForm').serializeArray();
+          data.push({name:'loginEmail',value:loginEmail});
+          data.push({name:'secretCode',value:'xx'});
           console.log(data);
           var request = $.ajax({
-            url: "http://localhost:9090/accbook-0.0.1/expenditure/in",
+            url: "http://localhost:9090/expenditure/in",
             method: "POST",
             data: data,
             dataType : "json"
@@ -117,6 +124,7 @@
           request.done(function( msg ) {
             console.log(msg);
             alert(msg.message);
+            location.href = '../index.html';
           });
 
           request.fail(function( jqXHR, textStatus ) {
@@ -132,12 +140,6 @@
                 msg = 'Unauthorized. [401]';
             } else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
             } else {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
