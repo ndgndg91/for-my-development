@@ -12,7 +12,7 @@ console.log(newMap.delete(sportsObj));
 
 
 // VM1500:9 true
-// VM1500:10 false
+// VM1500:10 false      --> 메모리 주소가 다름
 // VM1500:11 true
 // undefined
 // newMap
