@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>지출 조회</title>
+  <title>수입 조회</title>
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="../js/common.js"></script>
 
@@ -19,15 +19,14 @@
 </head>
 <body>
   <div class="table-responsive">
-    <table id="exList" class="table table-hover table-fixed table-sm">
+    <table id="inList" class="table table-hover table-fixed table-sm">
       <thead>
         <tr>
           <th>번호</th>
-          <th>지출명</th>
-          <th>지출금</th>
-          <th>지출일</th>
-          <th>지출종류</th>
-          <th>결제방법</th>
+          <th>수입명</th>
+          <th>수입금액</th>
+          <th>수입일</th>
+          <th>수입종류</th>
         </tr>
       </thead>
       <tbody>
@@ -35,17 +34,16 @@
       <tfoot>
         <tr>
           <th>번호</th>
-          <th>지출명</th>
-          <th>지출금</th>
-          <th>지출일</th>
-          <th>지출종류</th>
-          <th>결제방법</th>
+          <th>수입명</th>
+          <th>수입금액</th>
+          <th>수입일</th>
+          <th>수입종류</th>
         </tr>
       </tfoot>
     </table>
   </div>
   <script type="text/javascript">
-    var $exList = $('#exList').find('tbody');
+    var $exList = $('#inList').find('tbody');
     $(document).ready(function() {
       appendHeader();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
@@ -60,7 +58,7 @@
       });
       console.log(data);
       var request = $.ajax({
-        url: "http://localhost:9090/expenditure/sel/all",
+        url: "http://localhost:9090/income/sel/all",
         method: "GET",
         data: data,
         dataType: "json"
@@ -69,16 +67,12 @@
       request.done(function(msg) {
         console.log(msg);
         for (let ex of msg) {
-          if (ex.eMethod == null) {
-            ex.eMethod = '-';
-          }
           $exList.append(`<tr>
-            <td>${ex.eId}</td>
-            <td>${ex.eName}</td>
-            <td>${ex.eAmount}</td>
-            <td>${ex.eDate}</td>
-            <td>${ex.eType}</td>
-            <td>${ex.eMethod}</td>
+            <td>${ex.iId}</td>
+            <td>${ex.iName}</td>
+            <td>${ex.iAmount}</td>
+            <td>${ex.iDate}</td>
+            <td>${ex.iType}</td>
           </tr>`);
         }
         $('#exList').DataTable({

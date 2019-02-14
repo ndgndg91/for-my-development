@@ -29,7 +29,7 @@ var processFail = function (jqXHR){
 var appendHeader = function () {
   let header = `<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff4f0;">
     <!-- Navbar content -->
-    <a class="navbar-brand" href="#">Main</a>
+    <a class="navbar-brand" href="/~ndgndg91/dayLife/index.html">Main</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,10 +43,10 @@ var appendHeader = function () {
             지출
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkExpenditure">
-            <a class="dropdown-item" href="./expenditure/expenditureWrite.html">지출 기록</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/expenditure/expenditureWrite.html">지출 기록</a>
             <a class="dropdown-item" href="#">지출 수정</a>
             <a class="dropdown-item" href="#">지출 삭제</a>
-            <a class="dropdown-item" href="./expenditure/expenditureList.html">지출 조회</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/expenditure/expenditureList.html">지출 조회</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -57,7 +57,7 @@ var appendHeader = function () {
             <a class="dropdown-item" href="#">수입 기록</a>
             <a class="dropdown-item" href="#">수입 수정</a>
             <a class="dropdown-item" href="#">수입 삭제</a>
-            <a class="dropdown-item" href="#">수입 조회</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/income/incomeList.html"">수입 조회</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -65,7 +65,7 @@ var appendHeader = function () {
             근무 일지
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkWorkHistory">
-            <a class="dropdown-item" href="./workHistory/workHistoryWrite.html">근무일지 기록</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/workHistory/workHistoryWrite.html">근무일지 기록</a>
             <a class="dropdown-item" href="#">근무일지 수정</a>
             <a class="dropdown-item" href="#">근무일지 삭제</a>
             <a class="dropdown-item" href="#">근무일지 조회</a>
