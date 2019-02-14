@@ -5,6 +5,7 @@
     <title>로그인</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/common.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <style media="screen">
 
@@ -309,7 +310,11 @@ input[type=text]:placeholder {
             url : "http://localhost:9090/user/login",
             method: "POST",
             data: data,
-            dataType : "json"
+            crossDomain: true,
+            dataType : "json",
+            beforeSend: function(xhr){
+                xhr.withCredentials = true;
+            },
           });
 
           request.done(function( msg ) {
@@ -326,30 +331,7 @@ input[type=text]:placeholder {
           });
 
           request.fail(function( jqXHR, textStatus ) {
-            console.log(jqXHR);
-            console.log(jqXHR.status);
-            console.log(jqXHR.statusText);
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = '연결 불가. 네트워크를 확인하세요.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 401) {
-                msg = 'Unauthorized. [401]';
-            } else if (jqXHR.status == 498) {
-                msg = 'Not Found SecretCode [498]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            alert( "Request failed: " + msg );
+            processFail(jqXHR)
           });
 
           request.always(function(){

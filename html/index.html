@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>메인</title>
     <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/common.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -94,6 +95,14 @@
         <div class="col-6 col-md-4" id="lineLast10Days">
         </div>
       </div>
+      <div class="row">
+        <div class="col-6 col-md-4" id="workHistoryLast10days">
+        </div>
+        <div class="col-6 col-md-4">
+        </div>
+        <div class="col-6 col-md-4">
+        </div>
+      </div>
     </div>
 
     <script type="text/javascript">
@@ -103,12 +112,11 @@
         alert('로그인이 필요합니다!');
         location.href = 'login.html';
       }else{
-        $('#welcomeMain').text(loginUser.uNick +' 님 환엽합니다!');
+        $('#welcomeMain').text(loginUser.uNick +' 님 환영합니다!');
       }
-      
+
       var request = $.ajax({
-            // url : "http://localhost:9090/expenditure/sel/sumBy3Year",
-            url: "http://localhost:9090/expenditure/sel/sumBy3Year",
+            url : "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
@@ -150,9 +158,7 @@
           });
 
           var request2 = $.ajax({
-            // url : "http://localhost:9090/expenditure/sel/allType",
-            url: "http://localhost:9090/expenditure/sel/allType",
-            method: "GET",
+            url : "http://localhost:9090/expenditure/sel/allType",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
             dataType : "json"
@@ -192,8 +198,7 @@
           });
 
           var request3 = $.ajax({
-            // url : "http://localhost:9090/expenditure/sel/last10Days",
-            url: "http://localhost:9090/expenditure/sel/last10Days",
+            url : "http://localhost:9090/expenditure/sel/last10Days",
             method: "GET",
             data: {'loginEmail':loginUser.uEmail,
                     'secretCode':'ndgndg91'},
@@ -239,32 +244,7 @@
           });
     });
 
-    function processFail(jqXHR){
-      console.log(jqXHR);
-      console.log(jqXHR.status);
-      console.log(jqXHR.statusText);
-      var msg = '';
-            if (jqXHR.status === 0) {
-                msg = '연결 불가. 네트워크를 확인하세요.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 401) {
-                msg = 'Unauthorized. [401]';
-            } else if (jqXHR.status == 498) {
-                msg = 'Not Found SecretCode [498]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            alert( "Request failed: " + msg );
-    }
+
     </script>
   </body>
 </html>
