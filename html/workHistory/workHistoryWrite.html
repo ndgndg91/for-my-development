@@ -4,74 +4,13 @@
     <meta charset="utf-8">
     <title>근무 기록</title>
     <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/common.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff4f0;">
-      <!-- Navbar content -->
-      <a class="navbar-brand" href="#">Main</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkExpenditure" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              지출
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkExpenditure">
-              <a class="dropdown-item" href="../expenditure/expenditureWrite.html">지출 기록</a>
-              <a class="dropdown-item" href="#">지출 수정</a>
-              <a class="dropdown-item" href="#">지출 삭제</a>
-              <a class="dropdown-item" href="#">지출 조회</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkIncome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              수입
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkIncome">
-              <a class="dropdown-item" href="#">수입 기록</a>
-              <a class="dropdown-item" href="#">수입 수정</a>
-              <a class="dropdown-item" href="#">수입 삭제</a>
-              <a class="dropdown-item" href="#">수입 조회</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkWorkHistory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              근무 일지
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkWorkHistory">
-              <a class="dropdown-item" href="workHistoryWrite.html">근무일지 기록</a>
-              <a class="dropdown-item" href="#">근무일지 수정</a>
-              <a class="dropdown-item" href="#">근무일지 삭제</a>
-              <a class="dropdown-item" href="#">근무일지 조회</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkDiary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              일기
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDiary">
-              <a class="dropdown-item" href="#">일기 쓰기</a>
-              <a class="dropdown-item" href="#">일기 수정</a>
-              <a class="dropdown-item" href="#">일기 지우기</a>
-              <a class="dropdown-item" href="#">일기 보기</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Temp</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
       <div class="container">
         <h1 class="display-3">근무 기록</h1>
@@ -80,7 +19,7 @@
       </div>
   </div>
     <div class="container-fluid">
-      <form method="post" action="http://ndgndg91.synology.me:7070/accbook-0.0.1/workHistory/in" name="whForm" id="whForm">
+      <form method="post" name="whForm" id="whForm">
         <div class="form-group">
           <label for="exampleFormControlInput1">근무일</label>
           <input type="text" id="whDate" name="whDate" class="form-control" placeholder="xxxx-xx-xx">
@@ -112,11 +51,12 @@
     </div>
     <script type="text/javascript">
       $(document).ready(() => {
+        appendHeader();
         $('#submitWh').on('click', (arguments) => {
           let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
           var data = $('#whForm').serializeArray();
           data.push({name:'loginEmail',value:loginEmail});
-          data.push({name:'secretCode',value:'ndgndg91'});
+          data.push({name:'secretCode',value:''});
           console.log(data);
           var request = $.ajax({
             url: "http://localhost:9090/workHistory/in",
