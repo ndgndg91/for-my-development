@@ -84,6 +84,7 @@
         <h1 class="display-3" id="welcomeMain"> 님 환영합니다!</h1>
         <p class="lead">하루하루 나의 생활을 꼼꼼히 기록하자!</p>
         <p class="lead">내 삶을 기록하고 되돌아보자.</p>
+        <p><button type="button" class="btn btn-primary btn-lg" id="logout">종료</button></p>
       </div>
     </div>
     <div class="container-fluid">
@@ -114,6 +115,13 @@
       }else{
         $('#welcomeMain').text(loginUser.uNick +' 님 환영합니다!');
       }
+
+      $('#logout').on('click', (arguments) => {
+        if(confirm("로그아웃 하시겠습니까?")){
+          sessionStorage.clear();
+          location.href = 'login.html';
+        }
+      });
 
       var request = $.ajax({
             url : "http://localhost:9090/expenditure/sel/sumBy3Year",
