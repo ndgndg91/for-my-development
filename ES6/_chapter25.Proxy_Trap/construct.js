@@ -14,4 +14,5 @@ let newProxy = new Proxy(Sports, {
 });
 
 let sportsObj = new newProxy('축구');
-console.log(sportsObj.event);
+console.log(sportsObj.event);// undefined
+//문제있는 예제
