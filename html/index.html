@@ -150,7 +150,7 @@
                 tempMap.set(ex.eDate, Number(ex.eAmount));
               }else{
                 let tempAmount = Number(tempMap.get(ex.eDate));
-                tempAmount += Number(tempAmount) + Number(ex.eAmount);
+                tempAmount += Number(ex.eAmount);
                 tempMap.set(ex.eDate, tempAmount);
               }
             }
