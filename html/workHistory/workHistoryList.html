@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>수입 조회</title>
+  <title>근무일지 조회</title>
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="../js/common.js"></script>
 
@@ -19,14 +19,16 @@
 </head>
 <body>
   <div class="table-responsive">
-    <table id="inList" class="table table-hover table-fixed table-sm">
+    <table id="whList" class="table table-hover table-fixed table-sm">
       <thead>
         <tr>
           <th>번호</th>
-          <th>수입명</th>
-          <th>수입금액</th>
-          <th>수입일</th>
-          <th>수입종류</th>
+          <th>총근무시간</th>
+          <th>근무시작시간</th>
+          <th>근무종료시간</th>
+          <th>근무장소</th>
+          <th>근무내용</th>
+          <th>근무날짜</th>
         </tr>
       </thead>
       <tbody>
@@ -34,16 +36,18 @@
       <tfoot>
         <tr>
           <th>번호</th>
-          <th>수입명</th>
-          <th>수입금액</th>
-          <th>수입일</th>
-          <th>수입종류</th>
+          <th>총근무시간</th>
+          <th>근무시작시간</th>
+          <th>근무종료시간</th>
+          <th>근무장소</th>
+          <th>근무내용</th>
+          <th>근무날짜</th>
         </tr>
       </tfoot>
     </table>
   </div>
   <script type="text/javascript">
-    var $inList = $('#inList').find('tbody');
+    var $whList = $('#whList').find('tbody');
     $(document).ready(function() {
       appendHeader();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
@@ -58,7 +62,7 @@
       });
       console.log(data);
       var request = $.ajax({
-        url: "http://localhost:9090/income/sel/all",
+        url: "http://localhost:9090/workHistory/sel/all",
         method: "GET",
         data: data,
         dataType: "json"
@@ -66,17 +70,19 @@
 
       request.done(function(msg) {
         console.log(msg);
-        for (let inc of msg) {
-          $inList.append(`<tr>
-            <td>${inc.iId}</td>
-            <td>${inc.iName}</td>
-            <td>${inc.iAmount}</td>
-            <td>${inc.iDate}</td>
-            <td>${inc.iType}</td>
+        for (let wh of msg) {
+          $whList.append(`<tr>
+            <td>${wh.whId}</td>
+            <td>${wh.whHour} 시간</td>
+            <td>${wh.whStartTime}</td>
+            <td>${wh.whEndTime}</td>
+            <td>${wh.whPlace}</td>
+            <td>${wh.whWorkContent}</td>
+            <td>${wh.whDate}</td>
           </tr>`);
         }
-        $('#inList').DataTable({
-          "order": [[ 3, "desc" ]],
+        $('#whList').DataTable({
+          "order": [[ 6, "desc" ]],
           "lengthMenu": [ 30, 50, 100 ]
         });
         $('.dataTables_length').addClass('bs-select');

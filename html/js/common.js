@@ -68,7 +68,7 @@ var appendHeader = function () {
             <a class="dropdown-item" href="/~ndgndg91/dayLife/workHistory/workHistoryWrite.html">근무일지 기록</a>
             <a class="dropdown-item" href="#">근무일지 수정</a>
             <a class="dropdown-item" href="#">근무일지 삭제</a>
-            <a class="dropdown-item" href="#">근무일지 조회</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/workHistory/workHistoryList.html">근무일지 조회</a>
           </div>
         </li>
         <li class="nav-item dropdown">
