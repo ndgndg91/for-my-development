@@ -1,5 +1,7 @@
 package leave;
 
+
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -18,6 +20,8 @@ public class Main {
         scn.close();
         goRecursive(0, 0, N, takenTime, benefits);
         System.out.println(result);
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        System.out.println(hashMap.get("no"));
     }
 
     private static void goRecursive(int depth, int benefit, int N, int[] takenTime, int[] benefits) {
