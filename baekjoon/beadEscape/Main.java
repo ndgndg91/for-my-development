@@ -100,6 +100,8 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             if (directions[depth] == i)
                 continue;
+            if (Math.abs(directions[depth] - i) == 2)
+                continue;
             DFS(depth + 1, i, ground, red, blue, directions);
         }
     }
