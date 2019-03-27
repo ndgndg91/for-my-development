@@ -20,3 +20,7 @@ Promise.reject(errorObj)
 .then((param) => console.log(param),
       (error) => console.log("3:",error.message)
     );
+
+    // [Log] 1: – "에러"
+    // [Log] 2: – "에러"
+    // [Log] 3: – "에러"
