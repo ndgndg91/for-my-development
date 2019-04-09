@@ -6,6 +6,7 @@ import java.util.*;
 public class Solution {
 
     // Complete the climbingLeaderboard function below.
+    @SuppressWarnings("Duplicates")
     static int[] climbingLeaderboard(int[] scores, int[] alice) {
         HashSet<Integer> hs = new HashSet<>();
         for (int i = 0; i < scores.length; i++){
@@ -38,6 +39,36 @@ public class Solution {
         }
     }
 
+    @SuppressWarnings("Duplicates")
+    static int[] timeOut(int[] scores, int[] alice) {
+        HashSet<Integer> hs = new HashSet<>();
+        for (int i = 0; i < scores.length; i++){
+            hs.add(scores[i]);
+        }
+        Integer[] arr = new Integer[hs.size()];
+        arr = hs.toArray(arr);
+        Arrays.sort(arr, Comparator.reverseOrder());
+
+        int[] aliceRanks = new int[alice.length];
+        for (int i = 0; i < alice.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if(alice[i] > arr[j]) {
+                    aliceRanks[i] = j + 1;
+                    break;
+                } else if (alice[i] == arr[j]) {
+                    aliceRanks[i] = j + 1;
+                    break;
+                }
+            }
+            if (aliceRanks[i] == 0)
+                aliceRanks[i] = arr.length+1;
+        }
+        for (int i : aliceRanks) {
+            System.out.println(i);
+        }
+        return aliceRanks;
+    }
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
@@ -68,7 +99,7 @@ public class Solution {
             alice[i] = aliceItem;
         }
 
-        int[] result = climbingLeaderboard(scores, alice);
+        int[] result = timeOut(scores, alice);
 
         scanner.close();
     }
