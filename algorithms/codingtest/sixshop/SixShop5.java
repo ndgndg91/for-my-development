@@ -7,7 +7,8 @@ public class SixShop5 {
     static boolean[][] arr;
     static boolean[] visit;
 
-
+    //2 1 2
+    //2 3 4
     static long solve(int n, List<Integer> a, List<Integer> b) {
         N = n;
 
@@ -66,9 +67,9 @@ public class SixShop5 {
     static long num = 0;
     static long angryAnimal(int n, List<Integer> a, List<Integer> b) {
         boolean[][] standard = new boolean[n+1][n+1];
+        int small = 0;
+        int big = 0;
         for (int i = 0; i < a.size(); i++ ){
-            int small = 0;
-            int big = 0;
             if (a.get(i).equals(b.get(i)))
                 continue;
             if (a.get(i) > b.get(i)) {
@@ -95,22 +96,37 @@ public class SixShop5 {
         getCnt(i, mate+1, standard, n);
     }
     public static void main(String[] args) {
-        int cnt = 4;
+//        int cnt = 4;
 //        int cnt = 5;
+        int cnt = 7;
         ArrayList<Integer> listA = new ArrayList<>();
         ArrayList<Integer> listB = new ArrayList<>();
-        listA.add(2);
-        listA.add(1);
-        listA.add(2);
-        listB.add(2);
-        listB.add(3);
-        listB.add(4);
+//        listA.add(2);
+//        listA.add(1);
+//        listA.add(2);
+//        listB.add(2);
+//        listB.add(3);
+//        listB.add(4);
+
 //        listA.add(2);
 //        listA.add(1);
 //        listA.add(2);
 //        listB.add(2);
 //        listB.add(3);
 //        listB.add(5);
+
+        listA.add(1);
+        listA.add(2);
+        listA.add(4);
+        listA.add(2);
+        listA.add(6);
+
+        listB.add(4);
+        listB.add(5);
+        listB.add(7);
+        listB.add(3);
+        listB.add(7);
+
 //        long result = solve(cnt, listA, listB);
         long result = angryAnimal(cnt, listA, listB);
         System.out.println(result);

@@ -55,7 +55,7 @@ public class Crema2 {
         for (int i = 0; i < status.length; i++) {
 //            System.out.println(status[i] + " , " + status[i + 1]);
             System.out.println(status[i]);
-            if (status[i] <= i-1) {
+            if (status[i] <= i) {
                 protectTime = status[i];
                 failToProtect = false;
                 break;
@@ -101,3 +101,5 @@ public class Crema2 {
         bufferedReader.close();
     }
 }
+//3 4 3 1 3 3 2 1
+//7 4 15 15 12 18 3 8 7 2 5 3 2 3 3 2
