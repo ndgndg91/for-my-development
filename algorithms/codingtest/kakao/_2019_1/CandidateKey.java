@@ -1,4 +1,4 @@
-package _2019_1;
+package codingtest.kakao._2019_1;
 
 import java.util.ArrayList;
 

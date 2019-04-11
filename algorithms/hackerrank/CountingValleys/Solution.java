@@ -1,4 +1,4 @@
-package CountingValleys;
+package hackerrank.CountingValleys;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package babyShark;
+package baekjoon.babyShark;
 
 import java.util.*;
 

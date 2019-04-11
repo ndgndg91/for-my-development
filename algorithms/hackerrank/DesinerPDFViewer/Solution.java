@@ -1,4 +1,4 @@
-package DesinerPDFViewer;
+package hackerrank.DesinerPDFViewer;
 
 import java.io.*;
 import java.util.*;

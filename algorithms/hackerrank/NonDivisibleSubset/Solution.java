@@ -1,4 +1,4 @@
-package NonDivisibleSubset;
+package hackerrank.NonDivisibleSubset;
 
 import java.io.*;
 import java.util.*;

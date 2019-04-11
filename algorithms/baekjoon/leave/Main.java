@@ -1,4 +1,4 @@
-package leave;
+package baekjoon.leave;
 
 
 import java.util.Scanner;

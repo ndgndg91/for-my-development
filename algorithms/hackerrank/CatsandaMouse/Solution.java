@@ -1,4 +1,4 @@
-package CatsandaMouse;
+package hackerrank.CatsandaMouse;
 
 import java.io.*;
 import java.util.*;

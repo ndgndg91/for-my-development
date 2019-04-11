@@ -1,4 +1,4 @@
-package BirthdayChocolate;
+package hackerrank.BirthdayChocolate;
 
 import java.io.*;
 import java.util.*;

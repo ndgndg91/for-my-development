@@ -1,4 +1,4 @@
-package watch;
+package baekjoon.watch;
 
 import java.util.ArrayList;
 import java.util.HashSet;

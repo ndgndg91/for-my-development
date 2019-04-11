@@ -1,4 +1,4 @@
-package BetweenTwoSets;
+package hackerrank.BetweenTwoSets;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package ExtraLongFactorials;
+package hackerrank.ExtraLongFactorials;
 
 import java.math.*;
 import java.util.*;

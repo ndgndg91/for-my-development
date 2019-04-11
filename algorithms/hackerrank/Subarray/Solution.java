@@ -1,4 +1,4 @@
-package Subarray;
+package hackerrank.Subarray;
 
 import java.io.*;
 import java.util.*;

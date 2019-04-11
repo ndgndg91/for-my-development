@@ -1,3 +1,5 @@
+package codingtest.sixshop;
+
 import java.util.ArrayList;
 import java.util.List;
 

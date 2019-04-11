@@ -1,4 +1,4 @@
-package sort;
+package baekjoon.sort;
 
 public class SortDriver {
     public static void main(String[] args) {

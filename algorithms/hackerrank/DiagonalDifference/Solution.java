@@ -1,4 +1,4 @@
-package DiagonalDifference;
+package hackerrank.DiagonalDifference;
 
 import java.io.*;
 import java.util.*;

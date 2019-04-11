@@ -1,4 +1,4 @@
-package ElectronicsShop;
+package hackerrank.ElectronicsShop;
 
 import java.io.*;
 import java.util.*;

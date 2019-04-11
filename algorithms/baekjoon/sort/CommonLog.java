@@ -1,4 +1,4 @@
-package sort;
+package baekjoon.sort;
 
 public class CommonLog {
     Runtime runtime;

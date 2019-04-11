@@ -1,4 +1,4 @@
-package SockMerchant;
+package hackerrank.SockMerchant;
 
 import java.io.*;
 import java.util.*;

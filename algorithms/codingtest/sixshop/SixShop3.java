@@ -1,3 +1,5 @@
+package codingtest.sixshop;
+
 import java.util.LinkedList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package AppleAndOrange;
+package hackerrank.AppleAndOrange;
 
 import java.util.*;
 

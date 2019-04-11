@@ -1,4 +1,4 @@
-package operator;
+package baekjoon.operator;
 
 import java.util.HashSet;
 import java.util.Iterator;

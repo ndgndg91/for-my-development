@@ -1,4 +1,4 @@
-package DivisibleSumPair;
+package hackerrank.DivisibleSumPair;
 
 import java.io.*;
 import java.util.*;

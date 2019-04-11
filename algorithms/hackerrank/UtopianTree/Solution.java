@@ -1,4 +1,4 @@
-package UtopianTree;
+package hackerrank.UtopianTree;
 
 import java.io.*;
 import java.util.*;

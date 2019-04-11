@@ -1,3 +1,5 @@
+package baekjoon;
+
 public class NotAllowDupli {
     private static boolean[] visited = new boolean[26];
     private static String[] alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",

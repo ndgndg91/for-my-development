@@ -1,4 +1,4 @@
-package DrawingBook;
+package hackerrank.DrawingBook;
 
 import java.io.*;
 import java.util.*;

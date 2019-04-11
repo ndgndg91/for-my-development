@@ -1,4 +1,4 @@
-package beadEscape;
+package baekjoon.beadEscape;
 
 import java.util.HashSet;
 import java.util.Iterator;

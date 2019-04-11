@@ -1,4 +1,4 @@
-package BonAppetit;
+package hackerrank.BonAppetit;
 
 import java.io.*;
 import java.util.*;

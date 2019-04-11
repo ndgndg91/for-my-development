@@ -1,4 +1,4 @@
-package ClimbingTheLeaderBoard;
+package hackerrank.ClimbingTheLeaderBoard;
 
 import java.io.*;
 import java.util.*;

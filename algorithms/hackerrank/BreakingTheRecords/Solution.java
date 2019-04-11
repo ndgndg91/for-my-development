@@ -1,4 +1,4 @@
-package BreakingTheRecords;
+package hackerrank.BreakingTheRecords;
 
 import java.io.*;
 import java.util.*;

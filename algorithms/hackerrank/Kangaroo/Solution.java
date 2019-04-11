@@ -1,4 +1,4 @@
-package Kangaroo;
+package hackerrank.Kangaroo;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package TwoDArray;
+package hackerrank.TwoDArray;
 
 import java.util.*;
 

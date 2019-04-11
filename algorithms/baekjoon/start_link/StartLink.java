@@ -1,4 +1,4 @@
-package start_link;
+package baekjoon.start_link;
 
 
 import java.util.ArrayList;

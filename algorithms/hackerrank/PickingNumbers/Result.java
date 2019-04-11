@@ -1,4 +1,4 @@
-package PickingNumbers;
+package hackerrank.PickingNumbers;
 
 import java.io.*;
 import java.util.*;

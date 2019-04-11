@@ -1,4 +1,4 @@
-package examSupervision;
+package baekjoon.examSupervision;
 
 import java.util.Scanner;
 

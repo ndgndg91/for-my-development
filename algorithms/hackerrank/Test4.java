@@ -1,3 +1,5 @@
+package hackerrank;
+
 import javax.management.Query;
 import java.util.LinkedList;
 import java.util.Queue;

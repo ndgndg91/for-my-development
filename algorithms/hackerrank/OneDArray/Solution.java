@@ -1,4 +1,4 @@
-package OneDArray;
+package hackerrank.OneDArray;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package MigratoryBirds;
+package hackerrank.MigratoryBirds;
 
 import java.io.*;
 import java.util.*;

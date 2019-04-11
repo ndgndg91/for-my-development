@@ -1,4 +1,4 @@
-package SuperKthLIS;
+package hackerrank.SuperKthLIS;
 
 import java.io.*;
 import java.math.*;

@@ -1,4 +1,4 @@
-package TheHurdleRace;
+package hackerrank.TheHurdleRace;
 import java.io.*;
 import java.util.*;
 

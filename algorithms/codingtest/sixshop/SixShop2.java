@@ -1,3 +1,5 @@
+package codingtest.sixshop;
+
 import java.util.Stack;
 
 public class SixShop2 {
