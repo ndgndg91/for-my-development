@@ -1,6 +1,5 @@
 package hackerrank.Subarray;
 
-import java.io.*;
 import java.util.*;
 
 //5
