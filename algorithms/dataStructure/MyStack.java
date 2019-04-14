@@ -1,5 +1,8 @@
 package dataStructure;
 
+
+import java.util.EmptyStackException;
+
 public class MyStack {
     private int[] stack;
     private int maxSize;
@@ -26,6 +29,8 @@ public class MyStack {
     }
 
     private int pop() {
+        if (this.isEmpty())
+            throw new EmptyStackException();
         int element = this.stack[current - 1];
         this.stack[current - 1] = 0;
         current--;
@@ -34,6 +39,8 @@ public class MyStack {
     }
 
     private int peek() {
+        if (this.isEmpty())
+            throw new EmptyStackException();
         return this.stack[current - 1];
     }
 
@@ -63,7 +70,6 @@ public class MyStack {
 
     public static void main(String[] args) {
         MyStack myStack = new MyStack();
-
 
         System.out.println(myStack.isEmpty());
         myStack.push(10);
