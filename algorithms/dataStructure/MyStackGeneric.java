@@ -23,7 +23,6 @@ public class MyStackGeneric<T> {
             T[] temp = (T[]) Array.newInstance(this.stack.getClass(), maxSize+size);
             System.arraycopy(this.stack, 0, temp, 0, current);
             this.stack = temp;
-            System.gc();
         }
         this.stack[current++] = element;
         elementsCnt++;
