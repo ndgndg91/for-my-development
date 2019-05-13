@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>수입 기록</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
+      <div class="container">
+        <h1 class="display-3">수입 기록</h1>
+        <p class="lead">내가 얼마를 버는지 꼼꼼히 기록하자!</p>
+        <p class="lead"> 내 돈은 내가 관리한다.</p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <form method="post" name="eForm" id="eForm">
+        <div class="form-group">
+          <label for="eDate">수입일</label>
+          <input type="text" id="iDate" name="iDate" class="form-control" placeholder="xxxx-xx-xx">
+        </div>
+        <div class="form-group">
+          <label for="eType">수입종류</label>
+          <input type="text" id="iType" class="form-control" name="iType" placeholder="월급, 용돈, 대딩대행">
+        </div>
+        <div class="form-group">
+          <label for="eName">수입명</label>
+          <input type="text" id="iName" class="form-control" name="iName" placeholder="5월 월급">
+        </div>
+        <div class="form-group">
+          <label for="eAmount">수입 금액</label>
+          <input type="text" id="iAmount" class="form-control" name="iAmount" placeholder="정수형">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="submitE">기록</button>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        appendHeader();
+        $('#submitE').on('click', (arguments) => {
+          let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
+          var data = $('#eForm').serializeArray();
+          data.push({name:'loginEmail',value:loginEmail});
+          data.push({name:'secretCode',value:''});
+          console.log(data);
+          var request = $.ajax({
+            url: "http://localhost:9090/income/in",
+            method: "POST",
+            data: data,
+            dataType : "json"
+          });
+
+          request.done(function( msg ) {
+            console.log(msg);
+            alert(msg.message);
+            location.href = '../index.html';
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            processFail(jqXHR);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
