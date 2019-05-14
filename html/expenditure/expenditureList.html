@@ -7,6 +7,8 @@
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="../js/common.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="../css/common.css">
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -48,6 +50,8 @@
     var $exList = $('#exList').find('tbody');
     $(document).ready(function() {
       appendHeader();
+      prependLoadingAnimation();
+      showLoadingAnimation();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
       var data = [];
       data.push({
@@ -60,7 +64,7 @@
       });
       console.log(data);
       var request = $.ajax({
-        url: "http://localhost:9090/expenditure/sel/all",
+        url: "http://localhost:8080/expenditure/sel/all",
         method: "GET",
         data: data,
         dataType: "json"
@@ -86,10 +90,12 @@
           "lengthMenu": [ 30, 50, 100 ]
         });
         $('.dataTables_length').addClass('bs-select');
+        hideLoadingAnimation();
       });
 
       request.fail(function(jqXHR, textStatus) {
         processFail(jqXHR);
+        hideLoadingAnimation();
       });
 
 

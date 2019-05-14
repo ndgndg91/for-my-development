@@ -54,7 +54,7 @@ var appendHeader = function () {
             수입
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkIncome">
-            <a class="dropdown-item" href="#">수입 기록</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/income/incomeWrite.html">수입 기록</a>
             <a class="dropdown-item" href="#">수입 수정</a>
             <a class="dropdown-item" href="#">수입 삭제</a>
             <a class="dropdown-item" href="/~ndgndg91/dayLife/income/incomeList.html"">수입 조회</a>
@@ -105,4 +105,17 @@ var logout = function() {
     sessionStorage.clear();
     location.href = '/~ndgndg91/dayLife/login.html';
   }
+}
+
+var prependLoadingAnimation = function() {
+  let loadingCircle = `<div class="lds-spinner loadingCircle"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+  $('body').prepend(loadingCircle);
+}
+
+var showLoadingAnimation = function() {
+  $('.loadingCircle').show();
+}
+
+var hideLoadingAnimation = function() {
+  $('.loadingCircle').hide();
 }
