@@ -42,6 +42,7 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+      showLoadingAnimation();
       var loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
       if(null == loginUser){
         alert('로그인이 필요합니다!');
@@ -50,7 +51,6 @@
         $('#welcomeMain').text(loginUser.uNick +' 님 환영합니다!');
       }
       appendHeader();
-
       var request = $.ajax({
             url : "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",
@@ -179,6 +179,7 @@
           request3.fail(function( jqXHR, textStatus ) {
             processFail(jqXHR);
           });
+          hideLoadingAnimation();
     });
 
 

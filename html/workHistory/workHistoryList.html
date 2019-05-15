@@ -47,6 +47,7 @@
     </table>
   </div>
   <script type="text/javascript">
+    showLoadingAnimation();
     var $whList = $('#whList').find('tbody');
     $(document).ready(function() {
       appendHeader();
@@ -92,7 +93,7 @@
         processFail(jqXHR);
       });
 
-
+    hideLoadingAnimation();
     });
   </script>
 </body>

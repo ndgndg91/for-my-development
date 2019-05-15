@@ -43,6 +43,7 @@
     </table>
   </div>
   <script type="text/javascript">
+    showLoadingAnimation();
     var $inList = $('#inList').find('tbody');
     $(document).ready(function() {
       appendHeader();
@@ -86,7 +87,7 @@
         processFail(jqXHR);
       });
 
-
+      hideLoadingAnimation();
     });
   </script>
 </body>
