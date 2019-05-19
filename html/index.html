@@ -22,20 +22,21 @@
       </div>
     </div>
     <div class="container-fluid">
+      <h1 class="text-center">지출 통계</h1>
       <div class="row" style="height:400px;">
-        <div class="col-6 col-md-4" id="round3Year">
+        <div class="col-md-4" id="ex_round3Year">
         </div>
-        <div class="col-6 col-md-4" id="barAlltype">
+        <div class="col-md-4" id="ex_barAlltype">
         </div>
-        <div class="col-6 col-md-4" id="lineLast10Days">
+        <div class="col-md-4" id="ex_lineLast10Days">
         </div>
       </div>
-      <div class="row">
-        <div class="col-6 col-md-4" id="workHistoryLast10days">
+      <br>
+      <h1 class="text-center">수입 통계</h1>
+      <div class="row" style="height:400px;">
+        <div class="col-md-6" id="in_round3Year">
         </div>
-        <div class="col-6 col-md-4">
-        </div>
-        <div class="col-6 col-md-4">
+        <div class="col-md-6" id="in_barAlltype">
         </div>
       </div>
     </div>
@@ -177,6 +178,85 @@
           });
 
           request3.fail(function( jqXHR, textStatus ) {
+            processFail(jqXHR);
+          });
+
+          var request4 = $.ajax({
+            url : "http://localhost:9090/income/sel/sumBy3Year",
+            method: "GET",
+            data: {'loginEmail':loginUser.uEmail,
+                    'secretCode':''},
+            dataType : "json"
+          });
+
+          request4.done(function( msg ) {
+            console.log(msg);
+            if(msg.returnCode == '0000'){
+              let now = new Date();
+              let nowYear = now.getFullYear();
+              let now_1 = nowYear - 1;
+              let now_2 = now_1 - 1;
+              Morris.Donut({
+                element: 'in_round3Year',
+                data: [
+                  {label: nowYear+'년', value: msg.thisYear},
+                  {label: now_1+"년", value: msg.lastYear},
+                  {label: now_2+"년", value: msg.theYearBefore}
+                ],
+                backgroundColor: '#fff4f0',
+                labelColor: 'black',
+                colors: [
+                  '#0000b4',
+                  '#5533c2',
+                  '#7e5bcf',
+                  '#a182dc'
+                ],
+                resize: true,
+                formatter: function (x) { return new Intl.NumberFormat().format(x) + "원"}
+              });
+            }else{
+              alert('서버가 불안정 합니다.');
+            }
+          });
+
+          request4.fail(function( jqXHR, textStatus ) {
+            processFail(jqXHR);
+          });
+
+
+          var request5 = $.ajax({
+            url : "http://localhost:9090/income/sel/allType",
+            method: "GET",
+            data: {'loginEmail':loginUser.uEmail,
+                    'secretCode':''},
+            dataType : "json"
+          });
+
+          request5.done(function( msg ) {
+            console.log(msg);
+            Morris.Bar({
+              element: 'in_barAlltype',
+              data: [
+                { type: '월급', sum: msg.월급 },
+                { type: '과제대행알바', sum: msg.과제대행알바 },
+                { type: '용돈', sum: msg.용돈 },
+                { type: '상속', sum: msg.상속 },
+                { type: '연월차', sum: msg.연월차 },
+                { type: '퇴직금', sum: msg.퇴직금 },
+              ],
+              xkey: 'type',
+              ykeys: ['sum'],
+              labels: ['총 지출'],
+              barColors: [
+                  '#0000b4',
+                  '#5533c2'
+                ],
+              resize:true,
+              xLabelAngle: 45,
+            });
+          });
+
+          request5.fail(function( jqXHR, textStatus ) {
             processFail(jqXHR);
           });
           hideLoadingAnimation();
