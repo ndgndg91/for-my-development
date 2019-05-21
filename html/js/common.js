@@ -76,7 +76,7 @@ var appendHeader = function () {
             일기
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkDiary">
-            <a class="dropdown-item" href="#">일기 쓰기</a>
+            <a class="dropdown-item" href="/~ndgndg91/dayLife/diary/diaryWrite.html">일기 쓰기</a>
             <a class="dropdown-item" href="#">일기 수정</a>
             <a class="dropdown-item" href="#">일기 지우기</a>
             <a class="dropdown-item" href="#">일기 보기</a>
