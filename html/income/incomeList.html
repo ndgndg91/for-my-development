@@ -46,7 +46,7 @@
     showLoadingAnimation();
     var $inList = $('#inList').find('tbody');
     $(document).ready(function() {
-      appendHeader();
+      pageAssemble();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
       var data = [];
       data.push({

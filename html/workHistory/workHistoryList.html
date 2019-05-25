@@ -50,7 +50,7 @@
     showLoadingAnimation();
     var $whList = $('#whList').find('tbody');
     $(document).ready(function() {
-      appendHeader();
+      pageAssemble();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
       var data = [];
       data.push({

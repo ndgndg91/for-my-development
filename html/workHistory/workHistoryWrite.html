@@ -51,7 +51,7 @@
     </div>
     <script type="text/javascript">
       $(document).ready(() => {
-        appendHeader();
+        pageAssemble();
         $('#submitWh').on('click', (arguments) => {
           let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
           var data = $('#whForm').serializeArray();

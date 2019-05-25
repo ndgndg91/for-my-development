@@ -49,7 +49,7 @@
   <script type="text/javascript">
     var $exList = $('#exList').find('tbody');
     $(document).ready(function() {
-      appendHeader();
+      pageAssemble();
       prependLoadingAnimation();
       showLoadingAnimation();
       let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;

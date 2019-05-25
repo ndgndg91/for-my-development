@@ -52,7 +52,7 @@
       }else{
         $('#welcomeMain').text(loginUser.uNick +' 님 환영합니다!');
       }
-      appendHeader();
+      pageAssemble();
       var request = $.ajax({
             url : "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",

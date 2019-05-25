@@ -100,6 +100,20 @@ var appendHeader = function () {
  $('body').prepend(header);
 }
 
+var appendFooter = function () {
+  let footer = `<div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca;">
+      <div class="container">
+        <p class="lead">reserved By ndgndg91</p>
+      </div>
+    </div>`;
+    $('body').append(footer);
+}
+
+var pageAssemble = function () {
+  appendHeader();
+  appendFooter();
+}
+
 var logout = function() {
   if(confirm("로그아웃 하시겠습니까?")){
     sessionStorage.clear();

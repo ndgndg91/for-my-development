@@ -43,7 +43,7 @@
     </div>
     <script type="text/javascript">
       $(document).ready(() => {
-        appendHeader();
+        pageAssemble();
         $('#submitE').on('click', (arguments) => {
           let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;
           var data = $('#eForm').serializeArray();
