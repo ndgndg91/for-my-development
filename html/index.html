@@ -19,6 +19,7 @@
         <h1 class="display-3" id="welcomeMain"> 님 환영합니다!</h1>
         <p class="lead">하루하루 나의 생활을 꼼꼼히 기록하자!</p>
         <p class="lead">내 삶을 기록하고 되돌아보자.</p>
+        <p class="lead thisMonthAvgWorkTime"></p>
       </div>
     </div>
     <div class="container-fluid">
@@ -257,6 +258,22 @@
           });
 
           request5.fail(function( jqXHR, textStatus ) {
+            processFail(jqXHR);
+          });
+          var request6 = $.ajax({
+            url: "http://localhost:9090/workHistory/sel/avgWorkTimePerDayInThisMonth",
+            method:"GET",
+            data:{'loginEmail':loginUser.uEmail,
+                  'secretCode':'ndgndg91'},
+            dataType : "json"
+          });
+
+          request6.done(function( msg ){
+            console.log(msg);
+            $('.thisMonthAvgWorkTime').html('이번 달 평균 근무 시간 : <b>'+msg+'</b> 시간');
+          });
+
+          request6.fail(function(jqXHR, textStatus){
             processFail(jqXHR);
           });
           hideLoadingAnimation();
