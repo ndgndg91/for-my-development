@@ -41,7 +41,11 @@
         </div>
       </div>
     </div>
-
+    <div class="footer" style="position: fixed; left: 0;  bottom: 0;  width: 100%;  background-color: black;  color: white;  text-align: center;
+      height:90px; line-height: 90px; opacity:0.2;">
+      <p style="margin:0;">© 2018 Copyright:
+      <a href="https://github.com/ndgndg91"> https://github.com/ndgndg91</a></p>
+    </div>
     <script type="text/javascript">
     $(document).ready(function(){
       showLoadingAnimation();
@@ -52,7 +56,7 @@
       }else{
         $('#welcomeMain').text(loginUser.uNick +' 님 환영합니다!');
       }
-      pageAssemble();
+      appendHeader();
       var request = $.ajax({
             url : "http://localhost:9090/expenditure/sel/sumBy3Year",
             method: "GET",
