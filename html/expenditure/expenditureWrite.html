@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../datepicker/datetimepickerstyle.css"/>
   </head>
   <body>
     <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
@@ -21,9 +23,18 @@
     <div class="container-fluid">
       <form method="post" name="eForm" id="eForm">
         <div class="form-group">
-          <label for="eDate">지출일</label>
-          <input type="text" id="eDate" name="eDate" class="form-control" placeholder="xxxx-xx-xx">
+            <label>지출일</label>
+            <div class='input-group date dateTimePicker' id="datepicker1">
+                <input type='text' class="form-control" name="eDate" required="required" placeholder="xxxx-xx-xx"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
         </div>
+        <!-- <div class="form-group"> -->
+          <!-- <label for="eDate">지출일</label> -->
+          <!-- <input type="text" id="eDate" name="eDate" class="form-control" placeholder="xxxx-xx-xx"> -->
+        <!-- </div> -->
         <div class="form-group">
           <label for="eType">지출종류</label>
           <input type="text" id="eType" class="form-control" name="eType" placeholder="식비, 교통비, 유흥비, 의료비">
@@ -45,8 +56,13 @@
         </div>
       </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/locale/ko.js"></script>
+    <script src="../datepicker/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript">
       $(document).ready(() => {
+        activeDatePicker('datepicker1');
         pageAssemble();
         $('#submitE').on('click', (arguments) => {
           let loginEmail = JSON.parse(sessionStorage.getItem("loginUser")).uEmail;

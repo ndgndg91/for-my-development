@@ -25,6 +25,18 @@ var processFail = function (jqXHR){
         alert( "Request failed: " + msg );
 }
 
+var activeDatePicker = function(id){
+  $('#'+id).datetimepicker({
+      format: 'YYYY-MM-DD',
+      locale:'ko',
+      icons: {
+          time: "fa fa-clock-o",
+          date: "fa fa-calendar",
+          up: "fa fa-arrow-up",
+          down: "fa fa-arrow-down"
+      }
+  });
+}
 
 var appendHeader = function () {
   let header = `<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff4f0;">
