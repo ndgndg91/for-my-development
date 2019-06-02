@@ -31,13 +31,16 @@
                 </span>
             </div>
         </div>
-        <!-- <div class="form-group"> -->
-          <!-- <label for="eDate">수입일</label> -->
-          <!-- <input type="text" id="iDate" name="iDate" class="form-control" placeholder="xxxx-xx-xx"> -->
-        <!-- </div> -->
         <div class="form-group">
           <label for="eType">수입종류</label>
-          <input type="text" id="iType" class="form-control" name="iType" placeholder="월급, 용돈, 대딩대행">
+          <select id="iType" name="iType" class="form-control">
+            <option>선택하세요.</option>
+            <option value="월급">월급</option>
+            <option value="과제대행알바">과제대행알바</option>
+            <option value="용돈">용돈</option>
+            <option value="연월차">연월차</option>
+            <option value="퇴직금">퇴직금</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="eName">수입명</label>
