@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../datepicker/datetimepickerstyle.css"/>
   </head>
   <body>
+    ody>
     <div class="jumbotron jumbotron-fluid" style="background-color:#ffd8ca">
       <div class="container">
         <h1 class="display-3">지출 기록</h1>
@@ -25,19 +26,27 @@
         <div class="form-group">
             <label>지출일</label>
             <div class='input-group date dateTimePicker' id="datepicker1">
-                <input type='text' class="form-control" name="eDate" required="required" placeholder="xxxx-xx-xx"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
+                <input type='text' class="form-control" name="eDate" required="required" placeholder="xxxx-xx-xx"/>
             </div>
         </div>
-        <!-- <div class="form-group"> -->
-          <!-- <label for="eDate">지출일</label> -->
-          <!-- <input type="text" id="eDate" name="eDate" class="form-control" placeholder="xxxx-xx-xx"> -->
-        <!-- </div> -->
         <div class="form-group">
           <label for="eType">지출종류</label>
-          <input type="text" id="eType" class="form-control" name="eType" placeholder="식비, 교통비, 유흥비, 의료비">
+          <select id="eType" name="eType" class="form-control" required="">
+            <option>선택하세요</option>
+            <option value="교통비">교통비</option>
+            <option value="식비">식비</option>
+            <option value="유흥비">유흥비</option>
+            <option value="통신비">통신비</option>
+            <option value="자기개발비">자기개발비</option>
+            <option value="의류비">의류비</option>
+            <option value="생활비">생활비</option>
+            <option value="미용비">미용비</option>
+            <option value="데이트비">데이트비</option>
+            <option value="기타">기타</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="eName">지출명</label>
@@ -49,7 +58,14 @@
         </div>
         <div class="form-group">
           <label for="eMethod">지출 방법</label>
-          <input type="text" id="eMethod" class="form-control" name="eMethod" placeholder="ex) 신용카드, 직불카드">
+          <select id="eMethod" name="eMethod" class="form-control">
+            <option>선택하세요</option>
+            <option value="신용카드">신용카드</option>
+            <option value="직불카드">직불카드</option>
+            <option value="현금영수증x">현금영수증x</option>
+            <option value="현금영수증o">현금영수증o</option>
+            <option value="자동이체">자동이체</option>
+          </select>
         </div>
         <div class="form-group">
           <button type="button" class="btn btn-primary btn-lg btn-block" id="submitE">기록</button>
