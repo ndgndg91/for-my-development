@@ -105,7 +105,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 5px 20px 10px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -301,6 +301,26 @@ input[type=text]:placeholder {
     <!-- -->
     <script type="text/javascript">
       $(document).ready(function(){
+        var pageInitRequest = $.ajax({
+            url : "http://localhost:9090/user/login",
+            method: "GET",
+            data: '',
+            crossDomain: true,
+            dataType : "json",
+            beforeSend: function(xhr){
+                xhr.withCredentials = true;
+            },
+          });
+
+        pageInitRequest.done(function( msg ) {
+          console.log(msg);
+          $('#email').focus();
+          $('#loginForm').append('<a href="'+msg+'"><img src="https://developers.kakao.com/assets/img/about/logos/kakaologin/kr/kakao_account_login_btn_medium_narrow.png" class="fadeIn fourth" style="margin-bottom:10px;"/></a>');
+        });
+
+        pageInitRequest.fail(function( jqXHR, textStatus ) {
+          processFail(jqXHR)
+        });
         $('#email').on('keyup', (event) => {
           if (event.keyCode == '13') {
             $('#loginBtn').trigger('click');
