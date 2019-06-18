@@ -59,10 +59,14 @@
         return loginUser;
       }
     $(document).ready(function(){
-      var userInfo = getUrlVars();
-      sessionStorage.setItem("loginUser",JSON.stringify(userInfo));  
       showLoadingAnimation();
-      var loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
+      var loginUser;
+      if(window.location.href.indexOf('?') > 0){
+        loginUser = getUrlVars();
+        sessionStorage.setItem("loginUser",JSON.stringify(loginUser)); 
+      } else {
+        loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
+      }
       if(null == loginUser){
         alert('로그인이 필요합니다!');
         location.href = 'login.html';
